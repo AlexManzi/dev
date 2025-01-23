@@ -1,8 +1,20 @@
 import styled, { keyframes, css } from "styled-components";
+import Image from "next/image";
 
 const fadeIn = keyframes` 
     from { opacity: 0; } 
     to { opacity: 1; } 
+`;
+
+const fadeInSlideDown = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -35,7 +47,48 @@ export const LandingOptionWrapper = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     color: black;
     animation: ${fadeIn} .2s ease-in;
+`;
+
+export const LandingContentWrapper = styled.div`
+    padding-top: 8rem;
+`;
+
+export const ProjectSection = styled.div`
+    width: 100%;
+    display: flex;
+    padding: 1.5rem 2rem;
+    justify-content: space-between;
+`;
+
+export const ProjectItemWrapper = styled.div`
+    display: flex;
+   
+    width: 31%;
+    height: auto;
+    background-color: red;
+    position: relative;
+    animation: ${fadeIn} .5s ease-in;
+`;
+
+export const ProjectImage = styled(Image)`
+    width: 100%;
+    height: 105%;
+    z-index: 1;
+    cursor: pointer;
+`;
+
+export const ProjectBioArea = styled.div`
+    padding: 0 2rem;
+
+`;
+
+export const ProjectHeading = styled.h2`
+    display: ${(props) => props.$show ? 'flex' : 'none'};
+    animation: ${fadeIn} .5s ease-in-out;
+`;
+
+export const ProjectDescription = styled.p`
+
 `;

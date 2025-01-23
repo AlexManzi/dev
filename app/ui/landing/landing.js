@@ -38,6 +38,10 @@ export default function Landing() {
     const [displayPanel, setDisplayPanel] = useState(false);
     const [displayAllOptions, setDisplayAllOptions] = useState(false);
 
+    const [showImgOne, setShowImgOne] = useState(false);
+    const [showImgTwo, setShowImgTwo] = useState(false);
+    const [showImgThree, setShowImgThree] = useState(false);
+
     useEffect(() => {
         const timerOne = setTimeout(() => {
             setDisplayPanel(true)
@@ -45,7 +49,7 @@ export default function Landing() {
 
         const timerTwo = setTimeout(() => {
             setDisplayAllOptions(true)
-        }, 3200)
+        }, 3400)
 
         return () => {
             clearTimeout(timerOne)

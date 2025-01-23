@@ -1,8 +1,10 @@
 "use client"
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { LandingOptionWrapper } from "../../globals"
+import { LandingOptionWrapper, LandingContentWrapper, ProjectSection, ProjectBioArea, ProjectHeading, ProjectDescription } from "../../globals"
+import { landingData } from "@/app/data/landing"
+import ProjectCard from "./projectCard"
 
 const SectionText = styled.h2`
     padding: 0 2rem;
@@ -10,9 +12,17 @@ const SectionText = styled.h2`
 
 const SectionListWrapper = styled.div`
       padding: 0 2rem;
+      position: absolute;
+      width: 40%;
+      bottom: 2rem;
 `;
 
-const SectionListHeading = styled.h2`
+const SectionListHeading = styled.p`
+    padding-top: 1rem;
+    font-size: 1.25rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid black;
+    width: max-content;
 `;
 
 const SectionListItemWrapper = styled.div`
@@ -22,14 +32,16 @@ const SectionListItemWrapper = styled.div`
     height: 70px;
     overflow-y: auto; 
     max-height: 100%; 
+    padding: .5rem 0;
 `;
-
 
 const SectionListItem = styled.p`
+    font-size: 1.1rem;
+    width: 100px;
 `;
 
-
 export default function Engineer() {
+    const [cardSelected, setCardSelected] = useState(null);
 
     const skills = ["React", "Next.js", "JavaScript", "CSS", "i18n", "DynamoDB", "Ruby on Rails", "HTML", "Restful APIs"];
 
@@ -39,15 +51,38 @@ export default function Engineer() {
         )
     });
 
+    const renderProjects = landingData.engineerProjects.map((project, idx) => {
+        return (
+            <ProjectCard
+                idx={idx}
+                setCardSelected={setCardSelected}
+                cardSelected={cardSelected}
+                project={project}
+                key={idx}
+            />
+        )
+    });
+
+    const projectDict = landingData.engineerProjects[cardSelected]
+
     return (
         <LandingOptionWrapper>
+            <LandingContentWrapper>
             <SectionText>I'm a dynamic and results-driven software engineer with a proven track record of delivering engaging frontend user experiences.</SectionText>
+            <ProjectSection>
+                {renderProjects}
+            </ProjectSection>
+            <ProjectBioArea>
+                <ProjectHeading>{projectDict ? projectDict.name : ''}</ProjectHeading>
+                <ProjectDescription $show={projectDict ? 'show' : ''}>{projectDict ? projectDict.description: ''}</ProjectDescription>
+            </ProjectBioArea>
             <SectionListWrapper>
-                <SectionListHeading>Skills</SectionListHeading>
+                <SectionListHeading></SectionListHeading>
                 <SectionListItemWrapper>
                     {renderSkills}
                 </SectionListItemWrapper>
             </SectionListWrapper>
+            </LandingContentWrapper>
         </LandingOptionWrapper>
     )
 };
