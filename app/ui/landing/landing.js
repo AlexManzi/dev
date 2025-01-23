@@ -1,9 +1,12 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState,  } from "react"
 import styled from "styled-components"
 import Typewriter from "typewriter-effect"
 import { ContentWrapper } from "../globals"
+import AiExpert from "./landingOptions/aiExpert"
+import BrandBuilder from "./landingOptions/brandBuilder"
+import Engineer from "./landingOptions/engineer"
 
 const LandingContentWrapper = styled.div`
     display: flex;
@@ -58,7 +61,11 @@ export default function Landing() {
         )
     });
 
-    console.log(activeOption)
+    const displayDictionary = {
+        "Brand Builder": <BrandBuilder />,
+        "Frontend Engineer": <Engineer />,
+        "AI Expert": <AiExpert />
+    };
 
     //Build user experiences, launch brands, and I blank
 
@@ -71,7 +78,7 @@ export default function Landing() {
                 </SelfDiv>
             </LandingHeaderWrapper>
             <AssessmentContainer>
-
+                {displayDictionary[activeOption]}
             </AssessmentContainer>
         </ContentWrapper>
     )
