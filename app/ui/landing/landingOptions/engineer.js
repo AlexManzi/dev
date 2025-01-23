@@ -16,7 +16,14 @@ const SectionListHeading = styled.h2`
 `;
 
 const SectionListItemWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 70px;
+    overflow-y: auto; 
+    max-height: 100%; 
 `;
+
 
 const SectionListItem = styled.p`
 `;

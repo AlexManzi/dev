@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState,  } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Typewriter from "typewriter-effect"
-import { ContentWrapper } from "../globals"
+import { SelfItem, ContentWrapper, AssessmentContainer } from "../globals"
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
 import Engineer from "./landingOptions/engineer"
@@ -15,8 +15,8 @@ const LandingContentWrapper = styled.div`
 const LandingHeaderWrapper = styled.div`
     display: flex;
     align-items: center;
-
 `;
+
 const LandingHeaderText = styled.h1`
     font-size: 2rem;
     color: black;
@@ -32,23 +32,26 @@ const SelfDiv = styled.div`
     transition: all .25s ease;
 `;
 
-const SelfItem = styled.h1`
-    color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : 'rgba(0,0,0, .3)'};
-    cursor: pointer;
-    width: max-content;
-    transition: all .25s ease;
-`;
-
-const AssessmentContainer = styled.div`
-    height: 100%;
-    width: 65%;
-    background-color: red;
-`;
-
-
 export default function Landing() {
     const selfItemArray = ["Brand Builder", "Frontend Engineer", "AI Expert"];
     const [activeOption, setActiveOption] = useState(selfItemArray[1]);
+    const [displayPanel, setDisplayPanel] = useState(false);
+    const [displayAllOptions, setDisplayAllOptions] = useState(false);
+
+    useEffect(() => {
+        const timerOne = setTimeout(() => {
+            setDisplayPanel(true)
+        }, 1600)
+
+        const timerTwo = setTimeout(() => {
+            setDisplayAllOptions(true)
+        }, 3200)
+
+        return () => {
+            clearTimeout(timerOne)
+            clearTimeout(timerTwo)
+        }
+    }, []);
 
     const renderSelfItems = selfItemArray.map((item, idx) => {
         return (
@@ -57,6 +60,7 @@ export default function Landing() {
                 key={idx} 
                 $ego={selfItemArray[idx]} 
                 $active={activeOption}
+                $displayAllOptions={displayAllOptions}
             >{item}</SelfItem>
         )
     });
@@ -77,7 +81,7 @@ export default function Landing() {
                     {renderSelfItems}
                 </SelfDiv>
             </LandingHeaderWrapper>
-            <AssessmentContainer>
+            <AssessmentContainer $displayPanel={displayPanel}>
                 {displayDictionary[activeOption]}
             </AssessmentContainer>
         </ContentWrapper>
