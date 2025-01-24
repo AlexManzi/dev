@@ -71,12 +71,12 @@ export default function Engineer() {
     return (
         <LandingOptionWrapper>
             <LandingContentWrapper>
-            <SectionText>I'm a results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
+            <SectionText>Results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
             <ProjectSection>
                 {renderProjects}
             </ProjectSection>
             <ProjectBioArea>
-                <ProjectHeading>{projectText ? projectText.name : ''}</ProjectHeading>
+                <ProjectHeading $show={projectText}>{projectText ? projectText.name : ''}</ProjectHeading>
                 <ProjectDescription>{projectText ? projectText.description: ''}</ProjectDescription>
                 <ProjectLink href="google.com">{projectText ? 'See this app live here' : ''}</ProjectLink>
             </ProjectBioArea>

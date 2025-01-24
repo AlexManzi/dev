@@ -60,18 +60,18 @@ export const ProjectSection = styled.div`
     width: 100%;
     display: flex;
     padding: 1.5rem 2rem;
+    padding-right: 3rem;
     justify-content: space-between;
 `;
 
 export const ProjectItemWrapper = styled.div`
     display: flex;
-    width: 32%;
+    width: 32.3%;
     height: 130px;
     background-image: url(${(props) => props.$image});
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
-    background-color: red;
     cursor: pointer;
     position: relative;
     animation: ${fadeIn} .5s ease-in;
@@ -104,7 +104,7 @@ export const ProjectBioArea = styled.div`
 `;
 
 export const ProjectHeading = styled.h2`
-    display: flex;
+    display: ${(props) => props.$show ? 'flex' : 'none'};
     animation: ${fadeIn} .5s ease-in;
 `;
 
