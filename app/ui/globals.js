@@ -7,6 +7,15 @@ const fadeIn = keyframes`
     to { opacity: 1; } 
 `;
 
+const borderBottomAnimation = keyframes`
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+`;
+
 const fadeInSlideDown = keyframes`
     from {
         opacity: 0;
@@ -53,12 +62,13 @@ export const LandingOptionWrapper = styled.div`
 `;
 
 export const LandingContentWrapper = styled.div`
-    padding-top: 8rem;
+    padding-top: 7rem;
 `;
 
 export const ProjectSection = styled.div`
     width: 100%;
     display: flex;
+    height: 42vh;
     // gap: .25rem;
     padding: 1.5rem 2rem;
     padding-right: 3rem;
@@ -68,7 +78,7 @@ export const ProjectSection = styled.div`
 export const ProjectItemWrapper = styled.div`
     display: flex;
     width: ${(props) => props.$isselected ? '80%' : '32.5%'};
-    height: ${(props) => props.$isselected ? '38vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '36vh' : '21vh'};
     position: relative;
     cursor: pointer;
     position: relative;
@@ -83,14 +93,13 @@ export const ProjectItemFilter = styled.div`
     left: 0;
     background-color: rgba(0,0,0, 0);
     z-index: 20;
-    // height: 100%;
     width: 100%;
 
-    height: ${(props) => props.$isselected ? '38vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '36vh' : '21vh'};
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
-        height: ${(props) => props.$isselected ? '38vh' : '15.5vh'};
+        height: ${(props) => props.$isselected ? '36vh' : '15.5vh'};
     }
 
     // min-height: 180px;
@@ -102,12 +111,15 @@ export const ProjectItemFilter = styled.div`
 `;
 
 export const ProjectBioArea = styled.div`
+    display: flex;
+    flex-direction: column;
     padding: 0 2rem;
+    gap: .75rem;
 `;
 
 export const ProjectHeading = styled.h2`
-    display: ${(props) => props.$show ? 'flex' : 'none'};
-    animation: ${fadeIn} .5s ease-in;
+    display: flex;
+    // animation: ${fadeIn} .5s ease-in;
 `;
 
 export const ProjectDescription = styled.p`
@@ -115,15 +127,60 @@ export const ProjectDescription = styled.p`
 
 export const ProjectImage = styled(Image)`
     width: 100%;
-    height: ${(props) => props.$isselected ? '38vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '36vh' : '21vh'};
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
-        height: ${(props) => props.$isselected ? '38vh' : '15.5vh'};
+        height: ${(props) => props.$isselected ? '36vh' : '15.5vh'};
     }
     // min-height: 160px;
 `;
 
 export const ProjectLink = styled(Link)`
-    font-size: 1rem;
+    font-size: 1.1rem;
+    display: ${(props) => props.$show ? 'flex' : 'none'};
+    justify-content: start;
+    align-items: center;
+    width: max-content;
+    padding-bottom: .2rem;
+    position: relative;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 20;
+    -webkit-transition: ease-out 0.3s;
+    -moz-transition: ease-out 0.3s;
+    transition: all 0.3s ease;
+    ${props => props.$show && css` animation: ${fadeIn} .5s ease-in-out; `};
+
+    &:hover {
+        color: rgb(26,135,251);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: black;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background-color: rgb(26,135,251);
+        transition: width 0.3s ease-out;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
 `;
+
+

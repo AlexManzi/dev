@@ -13,11 +13,11 @@ const SectionText = styled.h2`
 const SectionListWrapper = styled.div`
       padding: 0 2rem;
       position: absolute;
-      width: 40%;
+      width: 60%;
       bottom: 2rem;
 `;
 
-const SectionListHeading = styled.p`
+const SectionListHeading = styled.h2`
     padding-top: 1rem;
     font-size: 1.25rem;
     padding-bottom: 2px;
@@ -27,8 +27,6 @@ const SectionListHeading = styled.p`
 
 const SectionListItemWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     height: 70px;
     overflow-y: auto; 
     max-height: 100%; 
@@ -37,7 +35,7 @@ const SectionListItemWrapper = styled.div`
 
 const SectionListItem = styled.p`
     font-size: 1.1rem;
-    width: 100px;
+    width: max-content;
 `;
 
 export default function Engineer() {
@@ -78,12 +76,12 @@ export default function Engineer() {
             <ProjectBioArea>
                 <ProjectHeading $show={projectText}>{projectText ? projectText.name : ''}</ProjectHeading>
                 <ProjectDescription>{projectText ? projectText.description: ''}</ProjectDescription>
-                <ProjectLink href="google.com">{projectText ? 'See this app live here' : ''}</ProjectLink>
+                <ProjectLink  passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app live' : ''}</ProjectLink>
             </ProjectBioArea>
             <SectionListWrapper>
-                <SectionListHeading></SectionListHeading>
+                <SectionListHeading>My Tech Stack</SectionListHeading>
                 <SectionListItemWrapper>
-                    {renderSkills}
+                <SectionListItem>React, Next.js, JavaScript, CSS, AWS, OpenAi, i18n, DynamoDB, Ruby on Rails, HTML, Restful APIs</SectionListItem>
                 </SectionListItemWrapper>
             </SectionListWrapper>
             </LandingContentWrapper>

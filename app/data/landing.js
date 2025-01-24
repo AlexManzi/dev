@@ -11,19 +11,19 @@ export const landingData = {
             name: "CNYCN Site",
             image: CenSite,
             description: "Description of the center site here",
-            link: "cnycn.org"
+            link: "https://cnycn.org/"
         },
         {
             name: "NYC District Profiles",
             image: districtProfiles,
             description: "Description of District Profiles here",
-            link: "cnycn.org"
+            link: "https://cnycn.org/district-profiles"
         },
         {
             name: "Impact Report",
             image: impactReport,
             description: "Description of the Impact Report here",
-            link: "cnycn.org"
+            link: "https://cnycn.org/impact-report"
         },
     ],   
     brandProjects: [

@@ -40,7 +40,7 @@ export default function Navbar() {
         <NavWrapper>
             <NavItems>
                 <NavLink href="/">Profile</NavLink>
-                <NavLink href="/work">Work</NavLink>
+                <NavLink href="/contact">Contact</NavLink>
             </NavItems>
         </NavWrapper>
     )
