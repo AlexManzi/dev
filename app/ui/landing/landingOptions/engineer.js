@@ -70,7 +70,7 @@ export default function Engineer() {
 
     return (
         <LandingOptionWrapper>
-            <LandingContentWrapper>
+            <LandingContentWrapper onClick={() => setCardSelected(null)}>
             <SectionText>Results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
             <ProjectSection>
                 {renderProjects}
