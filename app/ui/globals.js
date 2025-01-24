@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 const fadeIn = keyframes` 
     from { opacity: 0; } 
@@ -64,12 +65,31 @@ export const ProjectSection = styled.div`
 
 export const ProjectItemWrapper = styled.div`
     display: flex;
-   
-    width: 31%;
-    height: auto;
+    width: 32%;
+    height: 130px;
+    background-image: url(${(props) => props.$image});
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
     background-color: red;
+    cursor: pointer;
     position: relative;
     animation: ${fadeIn} .5s ease-in;
+`;
+
+export const ProjectItemFilter = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0);
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    transition: all .2s ease;
+
+    &:hover {
+        background-color: rgba(0,0,0, .2);
+    }
 `;
 
 export const ProjectImage = styled(Image)`
@@ -81,14 +101,17 @@ export const ProjectImage = styled(Image)`
 
 export const ProjectBioArea = styled.div`
     padding: 0 2rem;
-
 `;
 
 export const ProjectHeading = styled.h2`
-    display: ${(props) => props.$show ? 'flex' : 'none'};
-    animation: ${fadeIn} .5s ease-in-out;
+    display: flex;
+    animation: ${fadeIn} .5s ease-in;
 `;
 
 export const ProjectDescription = styled.p`
 
+`;
+
+export const ProjectLink = styled(Link)`
+    font-size: 1rem;
 `;

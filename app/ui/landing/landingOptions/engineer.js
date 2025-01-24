@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { LandingOptionWrapper, LandingContentWrapper, ProjectSection, ProjectBioArea, ProjectHeading, ProjectDescription } from "../../globals"
+import { LandingOptionWrapper, LandingContentWrapper, ProjectSection, ProjectBioArea, ProjectHeading, ProjectDescription, ProjectLink } from "../../globals"
 import { landingData } from "@/app/data/landing"
 import ProjectCard from "./projectCard"
 
@@ -42,6 +42,7 @@ const SectionListItem = styled.p`
 
 export default function Engineer() {
     const [cardSelected, setCardSelected] = useState(null);
+    const [projectText, setProjectText] = useState(null);
 
     const skills = ["React", "Next.js", "JavaScript", "CSS", "i18n", "DynamoDB", "Ruby on Rails", "HTML", "Restful APIs"];
 
@@ -63,18 +64,21 @@ export default function Engineer() {
         )
     });
 
-    const projectDict = landingData.engineerProjects[cardSelected]
+    useEffect(() => {
+        setProjectText(landingData.engineerProjects[cardSelected])
+    }, [cardSelected])
 
     return (
         <LandingOptionWrapper>
             <LandingContentWrapper>
-            <SectionText>I'm a dynamic and results-driven software engineer with a proven track record of delivering engaging frontend user experiences.</SectionText>
+            <SectionText>I'm a results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
             <ProjectSection>
                 {renderProjects}
             </ProjectSection>
             <ProjectBioArea>
-                <ProjectHeading>{projectDict ? projectDict.name : ''}</ProjectHeading>
-                <ProjectDescription $show={projectDict ? 'show' : ''}>{projectDict ? projectDict.description: ''}</ProjectDescription>
+                <ProjectHeading>{projectText ? projectText.name : ''}</ProjectHeading>
+                <ProjectDescription>{projectText ? projectText.description: ''}</ProjectDescription>
+                <ProjectLink href="google.com">{projectText ? 'See this app live here' : ''}</ProjectLink>
             </ProjectBioArea>
             <SectionListWrapper>
                 <SectionListHeading></SectionListHeading>
