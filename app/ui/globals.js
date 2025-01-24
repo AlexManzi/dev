@@ -66,15 +66,21 @@ export const ProjectSection = styled.div`
 
 export const ProjectItemWrapper = styled.div`
     display: flex;
-    width: 32.3%;
-    height: 130px;
+    width: ${(props) => props.$isselected ? '80%' : '32.3%'};
+    height: ${(props) => props.$isselected ? '223px' : '130px'};
     background-image: url(${(props) => props.$image});
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
     cursor: pointer;
     position: relative;
+    transition: ease .4s all;
     animation: ${fadeIn} .5s ease-in;
+
+    &:hover {
+        width: 80%;
+        height: 223px;
+    }
 `;
 
 export const ProjectItemFilter = styled.div`
@@ -90,13 +96,6 @@ export const ProjectItemFilter = styled.div`
     &:hover {
         background-color: rgba(0,0,0, .2);
     }
-`;
-
-export const ProjectImage = styled(Image)`
-    width: 100%;
-    height: 105%;
-    z-index: 1;
-    cursor: pointer;
 `;
 
 export const ProjectBioArea = styled.div`
