@@ -3,13 +3,16 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Typewriter from "typewriter-effect"
-import { SelfItem, ContentWrapper, AssessmentContainer } from "../globals"
+import { SelfItem, ContentWrapper, AssessmentContainer, SectionListWrapper, SectionListItem } from "../globals"
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
 import Engineer from "./landingOptions/engineer"
 
 const LandingContentWrapper = styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
 const LandingHeaderWrapper = styled.div`
@@ -32,8 +35,24 @@ const SelfDiv = styled.div`
     transition: all .25s ease;
 `;
 
+const SectionListHeading = styled.h2`
+    padding-top: 1rem;
+    font-size: 1.25rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid black;
+    width: max-content;
+`;
+
+const SectionListItemWrapper = styled.div`
+    display: flex;
+    height: 70px;
+    overflow-y: auto; 
+    max-height: 100%; 
+    padding: .5rem 0;
+`;
+
 export default function Landing() {
-    const selfItemArray = ["Brand Builder", "Frontend Engineer", "AI Expert"];
+    const selfItemArray = ["Brand Builder", "FullStack Engineer", "AI Expert"];
     const [activeOption, setActiveOption] = useState(selfItemArray[1]);
     const [displayPanel, setDisplayPanel] = useState(false);
     const [displayAllOptions, setDisplayAllOptions] = useState(false);
@@ -71,23 +90,31 @@ export default function Landing() {
 
     const displayDictionary = {
         "Brand Builder": <BrandBuilder />,
-        "Frontend Engineer": <Engineer />,
+        "FullStack Engineer": <Engineer />,
         "AI Expert": <AiExpert />
     };
 
     //Build user experiences, launch brands, and I blank
 
+    console.log(displayAllOptions)
+
     return (
         <ContentWrapper>
+            <LandingContentWrapper>
             <LandingHeaderWrapper>
                 <LandingHeaderText>Alex is a</LandingHeaderText>
                 <SelfDiv $active={activeOption}>
                     {renderSelfItems}
                 </SelfDiv>
             </LandingHeaderWrapper>
+            <SectionListWrapper $display={displayAllOptions}>
+                    <SectionListItem $display={displayAllOptions}>React - Next.js - JavaScript - CSS -  OpenAI</SectionListItem>
+            </SectionListWrapper>
+            </LandingContentWrapper>
             <AssessmentContainer $displayPanel={displayPanel}>
                 {displayDictionary[activeOption]}
             </AssessmentContainer>
+            
         </ContentWrapper>
     )
 };

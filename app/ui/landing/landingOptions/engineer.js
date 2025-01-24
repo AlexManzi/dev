@@ -6,34 +6,6 @@ import { LandingOptionWrapper, LandingContentWrapper, SectionText, ProjectSectio
 import { landingData } from "@/app/data/landing"
 import ProjectCard from "./projectCard"
 
-const SectionListWrapper = styled.div`
-      padding: 0 2rem;
-      position: absolute;
-      width: 60%;
-      bottom: 2rem;
-`;
-
-const SectionListHeading = styled.h2`
-    padding-top: 1rem;
-    font-size: 1.25rem;
-    padding-bottom: 2px;
-    border-bottom: 2px solid black;
-    width: max-content;
-`;
-
-const SectionListItemWrapper = styled.div`
-    display: flex;
-    height: 70px;
-    overflow-y: auto; 
-    max-height: 100%; 
-    padding: .5rem 0;
-`;
-
-const SectionListItem = styled.p`
-    font-size: 1.1rem;
-    width: max-content;
-`;
-
 export default function Engineer() {
     const [cardSelected, setCardSelected] = useState(null);
     const [projectText, setProjectText] = useState(null);
@@ -66,12 +38,6 @@ export default function Engineer() {
                 <ProjectDescription>{projectText ? projectText.description: ''}</ProjectDescription>
                 <ProjectLink  target="_blank" passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app live' : ''}</ProjectLink>
             </ProjectBioArea>
-            <SectionListWrapper>
-                <SectionListHeading>My Tech Stack</SectionListHeading>
-                <SectionListItemWrapper>
-                <SectionListItem>React, Next.js, JavaScript, CSS, AWS, OpenAi, i18n, DynamoDB, GoogleCloud, Rails, HTML, Restful APIs</SectionListItem>
-                </SectionListItemWrapper>
-            </SectionListWrapper>
             </LandingContentWrapper>
         </LandingOptionWrapper>
     )

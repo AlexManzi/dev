@@ -42,7 +42,26 @@ export const SelfItem = styled.h1`
     cursor: pointer;
     width: max-content;
     transition: ${(props) => !props.$displayAllOptions ? 'all .2s ease' : ''};
-    animation: ${(props) => props.$ego === "Frontend Engineer" ? '' : css`${fadeIn} .3s ease-in`};
+    animation: ${(props) => props.$ego === "FullStack Engineer" ? '' : css`${fadeIn} .3s ease-in`};
+`;
+
+export const SectionListWrapper = styled.div`
+    display: ${(props) => props.$display ? 'flex' : 'none'};
+    padding-left: 3rem;
+    margin-top: 15rem;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: black;
+    animation: ${fadeIn} .2s ease-in;
+`;
+
+export const SectionListItem = styled.h2`
+    font-size: 1.1rem;
+    display: ${(props) => props.$display ? 'flex' : 'none'};
+    animation: ${fadeIn} .2s ease-in;   
 `;
 
 export const AssessmentContainer = styled.div`
@@ -85,7 +104,7 @@ export const ProjectItemWrapper = styled.div`
     position: relative;
     cursor: pointer;
     position: relative;
-    transition: ease .3s all;
+    transition: ease .2s all;
     animation: ${fadeIn} .5s ease-in;
 
 `;
@@ -106,7 +125,7 @@ export const ProjectItemFilter = styled.div`
     }
 
     // min-height: 180px;
-    transition: all .2s ease;
+    transition: background-color .2s ease;
 
     &:hover {
         background-color: rgba(0,0,0, .2);
@@ -136,7 +155,6 @@ export const ProjectImage = styled(Image)`
         width: ${(props) => props.$isselected ? '100%' : ''};
         height: ${(props) => props.$isselected ? '37vh' : '15.5vh'};
     }
-    // min-height: 160px;
 `;
 
 export const ProjectLink = styled(Link)`
