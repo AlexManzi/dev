@@ -32,6 +32,51 @@ const NavLink = styled(Link)`
     gap: .5rem;
     color: black;
     font-size: 1.1rem;
+    position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 19px;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  &:hover{
+    &::after {
+      opacity: 1;
+      transform: translate3d(0, 0.2em, 0);
+    }
+  }
+
+  &:focus {
+    &::after {
+      opacity: 1;
+      transform: translate3d(0, 0.2em, 0);
+    }
+  }
+
+  &::after { 
+    opacity 1;
+    transform: scale(0);
+    transform-origin: center;
+  }
+
+  &:hover {
+    &::after {
+      transform: scale(1);
+    }
+  }
+
+  &:focus {
+    &::after {
+      transform: scale(1);
+    }
+  }
 `;
 
 export default function Navbar() {

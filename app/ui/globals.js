@@ -52,6 +52,10 @@ export const AssessmentContainer = styled.div`
     animation: ${fadeIn} .5s ease-in;
 `;
 
+export const SectionText = styled.h2`
+padding: 0 2rem;
+`;
+
 export const LandingOptionWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -69,7 +73,6 @@ export const ProjectSection = styled.div`
     width: 100%;
     display: flex;
     height: 42vh;
-    // gap: .25rem;
     padding: 1.5rem 2rem;
     padding-right: 3rem;
     justify-content: space-between;
@@ -78,7 +81,7 @@ export const ProjectSection = styled.div`
 export const ProjectItemWrapper = styled.div`
     display: flex;
     width: ${(props) => props.$isselected ? '80%' : '32.5%'};
-    height: ${(props) => props.$isselected ? '36vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '37vh' : '21vh'};
     position: relative;
     cursor: pointer;
     position: relative;
@@ -95,11 +98,11 @@ export const ProjectItemFilter = styled.div`
     z-index: 20;
     width: 100%;
 
-    height: ${(props) => props.$isselected ? '36vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '37vh' : '21vh'};
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
-        height: ${(props) => props.$isselected ? '36vh' : '15.5vh'};
+        height: ${(props) => props.$isselected ? '37vh' : '15.5vh'};
     }
 
     // min-height: 180px;
@@ -127,11 +130,11 @@ export const ProjectDescription = styled.p`
 
 export const ProjectImage = styled(Image)`
     width: 100%;
-    height: ${(props) => props.$isselected ? '36vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '37vh' : '21vh'};
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
-        height: ${(props) => props.$isselected ? '36vh' : '15.5vh'};
+        height: ${(props) => props.$isselected ? '37vh' : '15.5vh'};
     }
     // min-height: 160px;
 `;

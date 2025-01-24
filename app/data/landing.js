@@ -3,6 +3,9 @@ import impactReport from "../../public/impactReport.webp"
 import districtProfiles from "../../public/districtProfiles.webp"
 import energyHub from "../../public/energyHub.webp"
 import mangiaAi from "../../public/mangiaAi.webp"
+import floodHelp from "../../public/floodHelp.webp"
+import bhp from "../../public/bhp.webp"
+
 
 export const landingData = {
     quickBlurb: ["", "Project Lead", ""],
@@ -31,7 +34,19 @@ export const landingData = {
             name: "Bronx & Brooklyn Energy Hub",
             image: energyHub,
             description: "Description of the Energy Hub here",
-            link: ""
+            link: "https://bxbkenergyhub.org/en-US/"
+        },
+        {
+            name: "FloodHelpNY",
+            image: floodHelp,
+            description: "Description of Floodhelp here",
+            link: "https://www.floodhelpny.org/"
+        },
+        {
+            name: "Black Homeownership Project",
+            image: bhp,
+            description: "Description of the Black Homeownership Project",
+            link: "https://bhp.cnycn.org/"
         }
     ],
     aiProjects: [
