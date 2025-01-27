@@ -7,6 +7,12 @@ import { SelfItem, ContentWrapper, AssessmentContainer, SectionListWrapper, Sect
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
 import Engineer from "./landingOptions/engineer"
+import { Outfit } from '@next/font/google';
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weights: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 const LandingContentWrapper = styled.div`
     display: flex;
@@ -28,14 +34,14 @@ const LandingHeaderWrapper = styled.div`
 const LandingHeaderText = styled.h1`
     font-size: 2rem;
     color: black;
-    padding-right: .6rem;
+    padding-right: .5rem;
 `;
 
 const SelfDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: ${(props) => props.$active === "Brand Builder" ? '4.75rem' : '0'};
-    margin-bottom: ${(props) => props.$active === "AI Expert" ? '4.5rem' : '0'}; 
+    margin-top: ${(props) => props.$active === "Brand Builder" ? '5.1rem' : '0'};
+    margin-bottom: ${(props) => props.$active === "AI Expert" ? '5rem' : '0'}; 
     transition: all .25s ease;
     // background-color: blue;
 `;
@@ -57,7 +63,7 @@ const SectionListItemWrapper = styled.div`
 `;
 
 export default function Landing() {
-    const selfItemArray = ["Brand Builder", "FullStack Engineer", "AI Expert"];
+    const selfItemArray = ["Brand Builder", "Fullstack Engineer", "AI Expert"];
     const [activeOption, setActiveOption] = useState(selfItemArray[1]);
     const [displayPanel, setDisplayPanel] = useState(false);
     const [displayAllOptions, setDisplayAllOptions] = useState(false);
@@ -95,7 +101,7 @@ export default function Landing() {
 
     const displayDictionary = {
         "Brand Builder": <BrandBuilder />,
-        "FullStack Engineer": <Engineer />,
+        "Fullstack Engineer": <Engineer />,
         "AI Expert": <AiExpert />
     };
 
@@ -104,9 +110,9 @@ export default function Landing() {
     console.log(displayAllOptions)
 
     return (
-        <ContentWrapper>
+        <ContentWrapper className={outfit.className}>
             <LandingContentWrapper>
-            <LandingHeaderWrapper>
+            <LandingHeaderWrapper >
                 <LandingHeaderText>Alex is a</LandingHeaderText>
                 <SelfDiv $active={activeOption}>
                     {renderSelfItems}

@@ -4,6 +4,12 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Outfit } from '@next/font/google';
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weights: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 const NavWrapper = styled.div`
     position: absolute;
@@ -119,7 +125,7 @@ export default function Navbar() {
 
 
     return (
-        <NavWrapper>
+        <NavWrapper className={outfit.className}>
             <NavItems>
                 <NavLink href="/" className={linkActive === "Profile" ? "active" : ''}>Profile</NavLink>
                 <NavLink href="/contact" className={linkActive === "Contact" ? "active" : ''}>Contact</NavLink>

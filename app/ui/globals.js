@@ -33,7 +33,6 @@ export const ContentWrapper = styled.div`
     min-height: 700px;
     width: 100%;
     background-color: white;
-    // justify-content: space-between;
 `;
 
 export const SelfItem = styled.h1`
@@ -41,10 +40,8 @@ export const SelfItem = styled.h1`
     color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : 'rgba(0,0,0, .3)'};
     cursor: pointer;
     width: max-content;
-    //THIS IS WHERE I MADE THE CHANGE
     transition: ${(props) => !props.$displayAllOptions ? 'all .2s ease' : 'all .2s ease'};
-    //
-    animation: ${(props) => props.$ego === "FullStack Engineer" ? '' : css`${fadeIn} .3s ease-in`};
+    animation: ${(props) => props.$ego === "Fullstack Engineer" ? '' : css`${fadeIn} .3s ease-in`};
 
     &:hover {
         color: ${(props) => props.$ego === props.$active ? '' : 'rgb(26,135,251)'};
@@ -95,11 +92,8 @@ export const LandingOptionWrapper = styled.div`
 export const LandingContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     aling-items: center;
     position: absolute;
-    // margin-top: -2rem;
-    // padding-top: -2rem;
     top: 20%;
     height: 50%;
     // background-color: red;
@@ -163,8 +157,6 @@ export const ProjectBioArea = styled.div`
 export const ProjectHeading = styled.h2`
     display: flex;
     margin: 0;
-    // animation: ${fadeIn} .5s ease-in;
-
 `;
 
 export const ProjectDescription = styled.p`
