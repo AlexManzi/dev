@@ -33,7 +33,7 @@ export const ContentWrapper = styled.div`
     min-height: 700px;
     width: 100%;
     background-color: white;
-    justify-content: space-between;
+    // justify-content: space-between;
 `;
 
 export const SelfItem = styled.h1`
@@ -41,8 +41,14 @@ export const SelfItem = styled.h1`
     color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : 'rgba(0,0,0, .3)'};
     cursor: pointer;
     width: max-content;
-    transition: ${(props) => !props.$displayAllOptions ? 'all .2s ease' : ''};
+    //THIS IS WHERE I MADE THE CHANGE
+    transition: ${(props) => !props.$displayAllOptions ? 'all .2s ease' : 'all .2s ease'};
+    //
     animation: ${(props) => props.$ego === "FullStack Engineer" ? '' : css`${fadeIn} .3s ease-in`};
+
+    &:hover {
+        color: ${(props) => props.$ego === props.$active ? '' : 'rgb(26,135,251)'};
+    }
 `;
 
 export const SectionListWrapper = styled.div`
@@ -52,7 +58,7 @@ export const SectionListWrapper = styled.div`
     align-items: center;
     position: absolute;
     display: flex;
-    width: 100%;
+    width: 30%;
     justify-content: center;
     color: black;
     animation: ${fadeIn} .2s ease-in;
@@ -67,12 +73,12 @@ export const SectionListItem = styled.h2`
 export const AssessmentContainer = styled.div`
     display: ${(props) => props.$displayPanel ? 'flex' : 'none'};
     height: 100%;
-    width: 65%;
+    width: 70%;
     animation: ${fadeIn} .5s ease-in;
 `;
 
 export const SectionText = styled.h2`
-padding: 0 2rem;
+    padding: 0 2rem;
 `;
 
 export const LandingOptionWrapper = styled.div`
@@ -81,32 +87,48 @@ export const LandingOptionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     color: black;
-    animation: ${fadeIn} .2s ease-in;
+    min-height: 700px;
+    transition: all .2s ease;
+    // background-color: red;
 `;
 
 export const LandingContentWrapper = styled.div`
-    padding-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    aling-items: center;
+    position: absolute;
+    // margin-top: -2rem;
+    // padding-top: -2rem;
+    top: 20%;
+    height: 50%;
+    // background-color: red;
+    
 `;
 
 export const ProjectSection = styled.div`
     width: 100%;
     display: flex;
-    height: 42vh;
+    height: auto;
     padding: 1.5rem 2rem;
-    padding-right: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     justify-content: space-between;
 `;
 
 export const ProjectItemWrapper = styled.div`
     display: flex;
-    width: ${(props) => props.$isselected ? '80%' : '32.5%'};
-    height: ${(props) => props.$isselected ? '37vh' : '21vh'};
+    width: ${(props) => props.$isselected ? '85%' : '32.5%'};
+    height: ${(props) => props.$isselected ? '100%' : '15vh'};
     position: relative;
     cursor: pointer;
     position: relative;
     transition: ease .2s all;
     animation: ${fadeIn} .5s ease-in;
 
+    &#oneCard {
+        width: ${(props) => props.$isselected ? '58%' : '32.5%'};
+    }
 `;
 
 export const ProjectItemFilter = styled.div`
@@ -116,17 +138,16 @@ export const ProjectItemFilter = styled.div`
     background-color: rgba(0,0,0, 0);
     z-index: 20;
     width: 100%;
-
-    height: ${(props) => props.$isselected ? '37vh' : '21vh'};
-
-    &.smallIcon {
-        width: ${(props) => props.$isselected ? '100%' : ''};
-        height: ${(props) => props.$isselected ? '37vh' : '15.5vh'};
-    }
-
-    // min-height: 180px;
+    min-height: 110px;
+    height: ${(props) => props.$isselected ? '100%' : '21vh'};
     transition: background-color .2s ease;
 
+    &.smallIcon {
+        // width: ${(props) => props.$isselected ? '100%' : ''};
+        height: ${(props) => props.$isselected ? '100%' : '15vh'};
+        // min-height: ${(props) => props.$isselected ? '33vh' : '90px'};
+    }
+   
     &:hover {
         background-color: rgba(0,0,0, .2);
     }
@@ -141,7 +162,9 @@ export const ProjectBioArea = styled.div`
 
 export const ProjectHeading = styled.h2`
     display: flex;
+    margin: 0;
     // animation: ${fadeIn} .5s ease-in;
+
 `;
 
 export const ProjectDescription = styled.p`
@@ -149,11 +172,14 @@ export const ProjectDescription = styled.p`
 
 export const ProjectImage = styled(Image)`
     width: 100%;
-    height: ${(props) => props.$isselected ? '37vh' : '21vh'};
+    height: ${(props) => props.$isselected ? '100%' : '21vh'};
+    min-height: 110px;
+    // max-height: 240px;
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
-        height: ${(props) => props.$isselected ? '37vh' : '15.5vh'};
+        // min-height: ${(props) => props.$isselected ? '33vh' : '100px'};
+        height: ${(props) => props.$isselected ? '100%' : '15vh'};
     }
 `;
 

@@ -9,6 +9,7 @@ import ProjectCard from "./projectCard"
 export default function AiExpert() {
     const [cardSelected, setCardSelected] = useState(null);
     const [projectText, setProjectText] = useState(null);
+    const oneCard = true;
 
     useEffect(() => {
         setProjectText(landingData.aiProjects[cardSelected])
@@ -22,6 +23,7 @@ export default function AiExpert() {
                 cardSelected={cardSelected}
                 project={project}
                 key={idx}
+                oneCard={oneCard}
             />
         )
     });
@@ -30,7 +32,7 @@ export default function AiExpert() {
         <LandingOptionWrapper>
             <LandingContentWrapper onClick={() => setCardSelected(null)}>
             <SectionText>Results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
-            <ProjectSection id="twoItems">
+            <ProjectSection id="oneItem">
                 {renderProjects}
             </ProjectSection>
             <ProjectBioArea>

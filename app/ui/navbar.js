@@ -14,7 +14,7 @@ const NavWrapper = styled.div`
 const NavItems = styled.div`
     display: flex;
     line-height: 64px;
-    padding: 0rem 3rem;
+    padding: 0rem 2rem;
     justify-content: end;
     gap: 2rem;
 

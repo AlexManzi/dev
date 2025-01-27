@@ -11,19 +11,23 @@ import Engineer from "./landingOptions/engineer"
 const LandingContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    // background-color: green;
+    width: max-content;
+    padding: 0 2rem;
 `;
 
 const LandingHeaderWrapper = styled.div`
     display: flex;
     align-items: center;
+    // background-color: blue;
+    width: 110%;
 `;
 
 const LandingHeaderText = styled.h1`
     font-size: 2rem;
     color: black;
-    padding-left: 3rem;
     padding-right: .6rem;
 `;
 
@@ -33,6 +37,7 @@ const SelfDiv = styled.div`
     margin-top: ${(props) => props.$active === "Brand Builder" ? '4.75rem' : '0'};
     margin-bottom: ${(props) => props.$active === "AI Expert" ? '4.5rem' : '0'}; 
     transition: all .25s ease;
+    // background-color: blue;
 `;
 
 const SectionListHeading = styled.h2`
@@ -114,7 +119,6 @@ export default function Landing() {
             <AssessmentContainer $displayPanel={displayPanel}>
                 {displayDictionary[activeOption]}
             </AssessmentContainer>
-            
         </ContentWrapper>
     )
 };
