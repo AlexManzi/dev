@@ -20,13 +20,12 @@ const LandingContentWrapper = styled.div`
     align-items: start;
     justify-content: center;
     width: max-content;
+    // background-color: red;
     padding: 0 2rem;
+    height: 100vh;
 
     @media (max-width: 950px) {
-        height: 100vh;
         width: 100%;
-        // background-color: green;
-        position: relative;
         padding: 0;
     }
 `;
@@ -39,7 +38,7 @@ const LandingHeaderWrapper = styled.div`
 
     @media (max-width: 950px) {
         width: 100%;
-        height: 100vh;
+        // height: 50vh;
         justify-content: center;
         align-items: center;
     }
@@ -62,26 +61,13 @@ const LandingHeaderText = styled.h1`
 const SelfDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: ${(props) => props.$active === "Brand Builder" ? '5.1rem' : '0'};
-    margin-bottom: ${(props) => props.$active === "AI Expert" ? '5rem' : '0'}; 
+    margin-top: ${(props) => {
+    if (props.$active === "Brand Builder") return '5.1rem';
+    if (props.$active === "AI Expert") return '-5rem';
+    return '0';
+    }};
     transition: all .25s ease;
     // background-color: blue;
-`;
-
-const SectionListHeading = styled.h2`
-    padding-top: 1rem;
-    font-size: 1.25rem;
-    padding-bottom: 2px;
-    border-bottom: 2px solid black;
-    width: max-content;
-`;
-
-const SectionListItemWrapper = styled.div`
-    display: flex;
-    height: 70px;
-    overflow-y: auto; 
-    max-height: 100%; 
-    padding: .5rem 0;
 `;
 
 export default function Landing() {
@@ -89,10 +75,6 @@ export default function Landing() {
     const [activeOption, setActiveOption] = useState(selfItemArray[1]);
     const [displayPanel, setDisplayPanel] = useState(false);
     const [displayAllOptions, setDisplayAllOptions] = useState(false);
-
-    const [showImgOne, setShowImgOne] = useState(false);
-    const [showImgTwo, setShowImgTwo] = useState(false);
-    const [showImgThree, setShowImgThree] = useState(false);
 
     useEffect(() => {
         const timerOne = setTimeout(() => {
@@ -129,12 +111,10 @@ export default function Landing() {
 
     //Build user experiences, launch brands, and I blank
 
-    console.log(displayAllOptions)
-
     return (
         <ContentWrapper className={outfit.className}>
             <LandingContentWrapper>
-            <LandingHeaderWrapper >
+            <LandingHeaderWrapper>
                 <LandingHeaderText>Alex is a</LandingHeaderText>
                 <SelfDiv $active={activeOption}>
                     {renderSelfItems}

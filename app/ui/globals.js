@@ -29,7 +29,7 @@ const fadeInSlideDown = keyframes`
 
 export const ContentWrapper = styled.div`
     display: flex;
-    height: 100vh;
+    height: auto;
     min-height: 700px;
     width: 100%;
     background-color: white;
@@ -62,12 +62,10 @@ export const SelfItem = styled.h1`
 
 export const SectionListWrapper = styled.div`
     display: ${(props) => props.$display ? 'flex' : 'none'};
-    // padding-left: 3rem;
-    margin-top: 15rem;
-    // align-items: center;
-    position: absolute;
+    padding-left: 1.5rem;
+    margin-top: 2rem;
     display: flex;
-    width: 30%;
+    width: 100%;
     text-align: center;
     justify-content: center;
     color: black;
@@ -76,8 +74,6 @@ export const SectionListWrapper = styled.div`
     @media (max-width: 950px) {
         width: 100%;
         padding-left: 0;
-        margin-top: 0;
-        bottom: 32%;      
     }
 `;
 
@@ -122,7 +118,7 @@ export const SectionText = styled.h2`
 
 export const LandingOptionWrapper = styled.div`
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     color: black;
@@ -139,12 +135,12 @@ export const LandingContentWrapper = styled.div`
     aling-items: center;
     position: absolute;
     top: 20%;
-    height: 50%;
+    height: auto;
 
     @media (max-width: 950px) {
         position: relative;
-        height: auto;
         top: 0;
+        padding: 2rem 0;
         background-color: white;
     }
 `;
