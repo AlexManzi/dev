@@ -20,27 +20,28 @@ const LandingContentWrapper = styled.div`
     align-items: start;
     justify-content: center;
     width: max-content;
-    // background-color: red;
     padding: 0 2rem;
     height: 100vh;
 
     @media (max-width: 950px) {
         width: 100%;
+        height: 70vh;
         padding: 0;
+        // padding-top: 4rem;
+        justify-content: center;
     }
 `;
 
 const LandingHeaderWrapper = styled.div`
     display: flex;
     align-items: center;
-    // background-color: blue;
     width: 110%;
 
     @media (max-width: 950px) {
         width: 100%;
         // height: 50vh;
-        justify-content: center;
-        align-items: center;
+        // justify-content: center;
+        padding: 0 2rem;
     }
 `;
 
@@ -54,7 +55,11 @@ const LandingHeaderText = styled.h1`
     }
 
     @media (max-width: 950px) {
-         font-size: 1.5rem;
+         font-size: 2rem;
+    }
+
+    @media (max-width: 500px) {
+         font-size: 1.65rem;
     }
 `;
 

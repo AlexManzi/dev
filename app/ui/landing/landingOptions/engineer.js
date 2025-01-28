@@ -33,7 +33,7 @@ export default function Engineer() {
             <ProjectSection>
                 {renderProjects}
             </ProjectSection>
-            <ProjectBioArea>
+            <ProjectBioArea $cardselected={cardSelected}>
                 <ProjectHeading $show={projectText}>{projectText ? projectText.name : ''}</ProjectHeading>
                 <ProjectDescription>{projectText ? projectText.description: ''}</ProjectDescription>
                 <ProjectLink  target="_blank" passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app live' : ''}</ProjectLink>

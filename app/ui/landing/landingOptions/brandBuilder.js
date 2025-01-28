@@ -33,11 +33,6 @@ export default function BrandBuilder() {
             <ProjectSection id="twoItems">
                 {renderProjects}
             </ProjectSection>
-            <ProjectBioArea>
-                <ProjectHeading $show={projectText}>{projectText ? projectText.name : ''}</ProjectHeading>
-                <ProjectDescription>{projectText ? projectText.description: ''}</ProjectDescription>
-                <ProjectLink  passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app live' : ''}</ProjectLink>
-            </ProjectBioArea>
             </LandingContentWrapper>
         </LandingOptionWrapper>
     )

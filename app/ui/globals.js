@@ -36,6 +36,7 @@ export const ContentWrapper = styled.div`
 
     @media (max-width: 950px) {
         flex-direction: column;
+        min-height: 100vh;
     }
 `;
 
@@ -56,31 +57,35 @@ export const SelfItem = styled.h1`
     }
 
     @media (max-width: 950px) {
-         font-size: 1.5rem;
+         font-size: 2rem;
+    }
+
+    @media (max-width: 500px) {
+         font-size: 1.65rem;
     }
 `;
 
 export const SectionListWrapper = styled.div`
-    display: ${(props) => props.$display ? 'flex' : 'none'};
+    display: flex;
     padding-left: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
     display: flex;
     width: 100%;
-    text-align: center;
     justify-content: center;
     color: black;
-    animation: ${fadeIn} .2s ease-in;
 
     @media (max-width: 950px) {
         width: 100%;
         padding-left: 0;
+        justify-content: center;
     }
 `;
 
 export const SectionListItem = styled.h2`
     font-size: 1.1rem;
-    display: ${(props) => props.$display ? 'flex' : 'none'};
-    animation: ${fadeIn} .2s ease-in;
+    color: ${(props) => props.$display ? "black" : "white"};
+    transition: all .3s ease;
+    user-select: ${(props) => props.$display ? 'auto' : 'none'};
     
     @media (max-width: 1200px) {
         font-size: calc(100vw / 60);
@@ -99,7 +104,7 @@ export const AssessmentContainer = styled.div`
 
     @media (max-width: 950px) {
         width: 100%;
-        height: 100vh;
+        height: auto;
     }
 `;
 
@@ -141,7 +146,6 @@ export const LandingContentWrapper = styled.div`
         position: relative;
         top: 0;
         padding: 2rem 0;
-        background-color: white;
     }
 `;
 
@@ -163,12 +167,12 @@ export const ProjectSection = styled.div`
 
 export const ProjectItemWrapper = styled.div`
     display: flex;
+    flex-direction: column;
     width: ${(props) => props.$isselected ? '85%' : '32.5%'};
     height: ${(props) => props.$isselected ? '100%' : 'auto'};
     position: relative;
     transition: ease .2s all;
     animation: ${fadeIn} .5s ease-in;
-    background-color: red;
 
     &#oneCard {
         width: ${(props) => props.$isselected ? '58%' : '32.5%'};
@@ -188,7 +192,7 @@ export const ProjectItemFilter = styled.div`
     z-index: 20;
     width: 100%;
     min-height: 110px;
-    height: 100%;
+    height: 10%;
     cursor: pointer;
     transition: background-color .2s ease;
 
@@ -202,12 +206,16 @@ export const ProjectItemFilter = styled.div`
 
     @media (max-width: 950px) {
         width: 100%;
-        height: auto;
 
         &.smallIcon {
             height: 100%;
         }
+
+        &:hover {
+            background-color: rgba(0,0,0, 0);
+        }
     }
+
 `;
 
 export const ProjectBioArea = styled.div`
@@ -215,6 +223,21 @@ export const ProjectBioArea = styled.div`
     flex-direction: column;
     padding: 0 2rem;
     gap: .75rem;
+
+    @media (max-width: 950px) {
+        display: none;
+    }
+`;
+
+export const ProjectBioAreaMobile = styled.div`
+    display: none;
+
+    @media (max-width: 950px) {
+        display: ${(props) => props.$cardselected ? 'flex' : 'none'};
+        flex-direction: column;
+        padding: 2rem 0;
+        color: black;
+    }
 `;
 
 export const ProjectHeading = styled.h2`
