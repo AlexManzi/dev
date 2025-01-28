@@ -62,12 +62,13 @@ export const SelfItem = styled.h1`
 
 export const SectionListWrapper = styled.div`
     display: ${(props) => props.$display ? 'flex' : 'none'};
-    padding-left: 3rem;
+    // padding-left: 3rem;
     margin-top: 15rem;
-    align-items: center;
+    // align-items: center;
     position: absolute;
     display: flex;
     width: 30%;
+    text-align: center;
     justify-content: center;
     color: black;
     animation: ${fadeIn} .2s ease-in;
@@ -76,16 +77,18 @@ export const SectionListWrapper = styled.div`
         width: 100%;
         padding-left: 0;
         margin-top: 0;
-        bottom: 32%;
-        // position: ab;
-      
+        bottom: 32%;      
     }
 `;
 
 export const SectionListItem = styled.h2`
     font-size: 1.1rem;
     display: ${(props) => props.$display ? 'flex' : 'none'};
-    animation: ${fadeIn} .2s ease-in;   
+    animation: ${fadeIn} .2s ease-in;
+    
+    @media (max-width: 1200px) {
+        font-size: calc(100vw / 60);
+    }
 
     @media (max-width: 950px) {
         font-size: 1rem;
@@ -106,11 +109,14 @@ export const AssessmentContainer = styled.div`
 
 export const SectionText = styled.h2`
     padding: 0 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
+
+    @media (max-width: 1200px) {
+        font-size: calc(100vw / 46);
+    }
 
     @media (max-width: 950px) { 
-        font-size: 1.2rem;
-            
+        font-size: 1.2rem;    
     }
 `;
 
@@ -134,7 +140,6 @@ export const LandingContentWrapper = styled.div`
     position: absolute;
     top: 20%;
     height: 50%;
-    // background-color: red;
 
     @media (max-width: 950px) {
         position: relative;
@@ -163,12 +168,11 @@ export const ProjectSection = styled.div`
 export const ProjectItemWrapper = styled.div`
     display: flex;
     width: ${(props) => props.$isselected ? '85%' : '32.5%'};
-    height: ${(props) => props.$isselected ? '100%' : '15vh'};
-    position: relative;
-    cursor: pointer;
+    height: ${(props) => props.$isselected ? '100%' : 'auto'};
     position: relative;
     transition: ease .2s all;
     animation: ${fadeIn} .5s ease-in;
+    background-color: red;
 
     &#oneCard {
         width: ${(props) => props.$isselected ? '58%' : '32.5%'};
@@ -188,7 +192,8 @@ export const ProjectItemFilter = styled.div`
     z-index: 20;
     width: 100%;
     min-height: 110px;
-    height: ${(props) => props.$isselected ? '100%' : '21vh'};
+    height: 100%;
+    cursor: pointer;
     transition: background-color .2s ease;
 
     &.smallIcon {
@@ -226,7 +231,7 @@ export const ProjectDescription = styled.p`
 
 export const ProjectImage = styled(Image)`
     width: 100%;
-    height: ${(props) => props.$isselected ? '100%' : '21vh'};
+    height: ${(props) => props.$isselected ? '100%' : 'auto'};
     min-height: 110px;
     // max-height: 240px;
 
