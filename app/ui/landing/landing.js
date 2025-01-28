@@ -19,9 +19,16 @@ const LandingContentWrapper = styled.div`
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    // background-color: green;
     width: max-content;
     padding: 0 2rem;
+
+    @media (max-width: 950px) {
+        height: 100vh;
+        width: 100%;
+        // background-color: green;
+        position: relative;
+        padding: 0;
+    }
 `;
 
 const LandingHeaderWrapper = styled.div`
@@ -29,12 +36,27 @@ const LandingHeaderWrapper = styled.div`
     align-items: center;
     // background-color: blue;
     width: 110%;
+
+    @media (max-width: 950px) {
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 const LandingHeaderText = styled.h1`
     font-size: 2rem;
     color: black;
     padding-right: .5rem;
+
+    @media (max-width: 1200px) {
+        font-size: calc(100vw / 42);
+    }
+
+    @media (max-width: 950px) {
+         font-size: 1.5rem;
+    }
 `;
 
 const SelfDiv = styled.div`

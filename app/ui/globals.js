@@ -33,6 +33,10 @@ export const ContentWrapper = styled.div`
     min-height: 700px;
     width: 100%;
     background-color: white;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+    }
 `;
 
 export const SelfItem = styled.h1`
@@ -45,6 +49,14 @@ export const SelfItem = styled.h1`
 
     &:hover {
         color: ${(props) => props.$ego === props.$active ? '' : 'rgb(26,135,251)'};
+    }
+
+    @media (max-width: 1200px) {
+        font-size: calc(100vw / 42);
+    }
+
+    @media (max-width: 950px) {
+         font-size: 1.5rem;
     }
 `;
 
@@ -59,12 +71,25 @@ export const SectionListWrapper = styled.div`
     justify-content: center;
     color: black;
     animation: ${fadeIn} .2s ease-in;
+
+    @media (max-width: 950px) {
+        width: 100%;
+        padding-left: 0;
+        margin-top: 0;
+        bottom: 32%;
+        // position: ab;
+      
+    }
 `;
 
 export const SectionListItem = styled.h2`
     font-size: 1.1rem;
     display: ${(props) => props.$display ? 'flex' : 'none'};
     animation: ${fadeIn} .2s ease-in;   
+
+    @media (max-width: 950px) {
+        font-size: 1rem;
+    }
 `;
 
 export const AssessmentContainer = styled.div`
@@ -72,10 +97,21 @@ export const AssessmentContainer = styled.div`
     height: 100%;
     width: 70%;
     animation: ${fadeIn} .5s ease-in;
+
+    @media (max-width: 950px) {
+        width: 100%;
+        height: 100vh;
+    }
 `;
 
 export const SectionText = styled.h2`
     padding: 0 2rem;
+    font-size: 2rem;
+
+    @media (max-width: 950px) { 
+        font-size: 1.2rem;
+            
+    }
 `;
 
 export const LandingOptionWrapper = styled.div`
@@ -85,8 +121,10 @@ export const LandingOptionWrapper = styled.div`
     flex-direction: column;
     color: black;
     min-height: 700px;
-    transition: all .2s ease;
-    // background-color: red;
+
+    @media (max-width: 950px) {
+        //  padding-top: 5rem;
+    }
 `;
 
 export const LandingContentWrapper = styled.div`
@@ -97,7 +135,13 @@ export const LandingContentWrapper = styled.div`
     top: 20%;
     height: 50%;
     // background-color: red;
-    
+
+    @media (max-width: 950px) {
+        position: relative;
+        height: auto;
+        top: 0;
+        background-color: white;
+    }
 `;
 
 export const ProjectSection = styled.div`
@@ -108,6 +152,12 @@ export const ProjectSection = styled.div`
     padding-left: 2rem;
     padding-right: 2rem;
     justify-content: space-between;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
 `;
 
 export const ProjectItemWrapper = styled.div`
@@ -123,6 +173,11 @@ export const ProjectItemWrapper = styled.div`
     &#oneCard {
         width: ${(props) => props.$isselected ? '58%' : '32.5%'};
     }
+
+     @media (max-width: 950px) {
+        width: 100%;
+        height: auto;
+    }
 `;
 
 export const ProjectItemFilter = styled.div`
@@ -137,13 +192,20 @@ export const ProjectItemFilter = styled.div`
     transition: background-color .2s ease;
 
     &.smallIcon {
-        // width: ${(props) => props.$isselected ? '100%' : ''};
         height: ${(props) => props.$isselected ? '100%' : '15vh'};
-        // min-height: ${(props) => props.$isselected ? '33vh' : '90px'};
     }
    
     &:hover {
         background-color: rgba(0,0,0, .2);
+    }
+
+    @media (max-width: 950px) {
+        width: 100%;
+        height: auto;
+
+        &.smallIcon {
+            height: 100%;
+        }
     }
 `;
 
@@ -170,8 +232,17 @@ export const ProjectImage = styled(Image)`
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
-        // min-height: ${(props) => props.$isselected ? '33vh' : '100px'};
         height: ${(props) => props.$isselected ? '100%' : '15vh'};
+    }
+
+    @media (max-width: 950px) {
+        width: 100%;
+        height: auto;
+
+        &.smallIcon {
+            width: 100%;
+            height: 100%;
+        }
     }
 `;
 

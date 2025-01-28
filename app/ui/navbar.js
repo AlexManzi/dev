@@ -12,24 +12,21 @@ const outfit = Outfit({
 });
 
 const NavWrapper = styled.div`
-    position: absolute;
-    height: 64px;
-    width: 100%;
+    position: relative;
+    // height: 64px;
+    // width: 100%;
 `;
 
 const NavItems = styled.div`
     display: flex;
+    position: absolute;
     line-height: 64px;
-    padding: 0rem 2rem;
-    justify-content: end;
+    // padding: 0rem 2rem;
+    right: 2rem;
     gap: 2rem;
 
-    @media (max-width: 980px) { 
-        padding: 0rem 1.5rem;
-    }
-
-    @media (max-width: 430px) { 
-        padding: 0rem 1rem;
+    @media (max-width: 950px) { 
+            gap: 1rem;
     }
 `;
 
@@ -48,7 +45,7 @@ const NavLink = styled(Link)`
   z-index: 5;
 
   @media (max-width: 1110px) {
-    margin-left: 3rem;
+    margin-left: 1rem;
   }
 
   &::after {
