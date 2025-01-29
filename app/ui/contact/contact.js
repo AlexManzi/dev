@@ -5,11 +5,16 @@ import styled from "styled-components"
 import { SelfItem, ContentWrapper, AssessmentContainer, SectionListWrapper } from "../globals"
 import { Octokit } from "octokit"
 
+const ContactPageContent = styled.div`
+    height: 100vh;
+    width: 100%;
+`;
+
 export default function Contact() {
     const [test, setTest] = useState(null);
 
 const octokit = new Octokit({
-  auth: process.env.GHSECRET, 
+  auth: process.env.NEXT_PUBLIC_GHSECRET, 
 });
 
 useEffect(() => {
@@ -30,6 +35,9 @@ console.log(test)
 
     return (
         <ContentWrapper>
+            <ContactPageContent>
+
+            </ContactPageContent>
         </ContentWrapper>
     )
 };

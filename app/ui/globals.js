@@ -7,26 +7,6 @@ const fadeIn = keyframes`
     to { opacity: 1; } 
 `;
 
-const borderBottomAnimation = keyframes`
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-`;
-
-const fadeInSlideDown = keyframes`
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-
 export const ContentWrapper = styled.div`
     display: flex;
     height: auto;
@@ -37,6 +17,73 @@ export const ContentWrapper = styled.div`
     @media (max-width: 950px) {
         flex-direction: column;
         min-height: 100vh;
+    }
+`;
+
+export const SelfDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: ${(props) => {
+    if (props.$active === "Brand Builder") return '5.1rem';
+    if (props.$active === "AI Expert") return '-5rem';
+    return '0';
+    }};
+    transition: all .25s ease;
+    
+    @media (max-width: 1200px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '4.5rem';
+            if (props.$active === "AI Expert") return '-4.4rem';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 1020px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '4.2rem';
+            if (props.$active === "AI Expert") return '-4.1rem';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 965px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '4.1rem';
+            if (props.$active === "AI Expert") return '-4rem';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 950px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '5.2rem';
+            if (props.$active === "AI Expert") return '-5rem';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 500px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '4.2rem';
+            if (props.$active === "AI Expert") return '-4.1rem';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 395px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '3.8rem';
+            if (props.$active === "AI Expert") return '-3.7rem';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 366px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '3.2rem';
+            if (props.$active === "AI Expert") return '-3.15rem';
+            return '0';
+        }};
     }
 `;
 
@@ -53,7 +100,15 @@ export const SelfItem = styled.h1`
     }
 
     @media (max-width: 1200px) {
-        font-size: calc(100vw / 42);
+        font-size: 1.75rem;
+    }
+
+    @media (max-width: 1020px) {
+        font-size: 1.65rem;
+    }
+    
+    @media (max-width: 965px) {
+        font-size: 1.6rem;
     }
 
     @media (max-width: 950px) {
@@ -63,16 +118,26 @@ export const SelfItem = styled.h1`
     @media (max-width: 500px) {
          font-size: 1.65rem;
     }
+
+    @media (max-width: 395px) {
+         font-size: 1.5rem;
+    }
+    
+    @media (max-width: 366px) {
+         font-size: 1.25rem;
+    }
 `;
 
 export const SectionListWrapper = styled.div`
     display: flex;
-    padding-left: 1.5rem;
-    margin-top: 3rem;
+    // padding-left: 1.5rem;
+    margin-top: 15rem;
     display: flex;
     width: 100%;
+    left: 2%;
     justify-content: center;
     color: black;
+    position: absolute;
 
     @media (max-width: 950px) {
         width: 100%;
@@ -130,7 +195,7 @@ export const LandingOptionWrapper = styled.div`
     min-height: 700px;
 
     @media (max-width: 950px) {
-        //  padding-top: 5rem;
+        margin-top: -3rem;
     }
 `;
 
@@ -139,13 +204,14 @@ export const LandingContentWrapper = styled.div`
     flex-direction: column;
     aling-items: center;
     position: absolute;
-    top: 20%;
+    top: 18%;
     height: auto;
 
     @media (max-width: 950px) {
         position: relative;
         top: 0;
-        padding: 2rem 0;
+        padding-top: 4rem;
+        padding-bottom: 3rem;
     }
 `;
 
@@ -192,7 +258,7 @@ export const ProjectItemFilter = styled.div`
     z-index: 20;
     width: 100%;
     min-height: 110px;
-    height: 10%;
+    height: 100%;
     cursor: pointer;
     transition: background-color .2s ease;
 
@@ -231,6 +297,7 @@ export const ProjectBioArea = styled.div`
 
 export const ProjectBioAreaMobile = styled.div`
     display: none;
+    transition: all .2s ease;
 
     @media (max-width: 950px) {
         display: ${(props) => props.$cardselected ? 'flex' : 'none'};
@@ -241,18 +308,20 @@ export const ProjectBioAreaMobile = styled.div`
 `;
 
 export const ProjectHeading = styled.h2`
-    display: flex;
+    display: ${(props) => props.$show ? 'flex' : 'none'};
+    animation: ${fadeIn} .5s ease-in-out;
     margin: 0;
 `;
 
 export const ProjectDescription = styled.p`
+    display: ${(props) => props.$show ? 'flex' : 'none'};
+    animation: ${fadeIn} .5s ease-in-out; 
 `;
 
 export const ProjectImage = styled(Image)`
     width: 100%;
-    height: ${(props) => props.$isselected ? '100%' : 'auto'};
+    height: 100%;
     min-height: 110px;
-    // max-height: 240px;
 
     &.smallIcon {
         width: ${(props) => props.$isselected ? '100%' : ''};
