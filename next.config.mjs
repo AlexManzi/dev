@@ -2,8 +2,9 @@
 const nextConfig = {
     output: 'export',
     compiler: {
-      styledComponents: true
-    }
+      styledComponents: true,
+    },
   };
   
-  module.exports = nextConfig;
+  export default nextConfig;
+  
