@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import styled from "styled-components"
 import { LandingOptionWrapper, LandingContentWrapper, SectionText, ProjectSection, ProjectBioArea, ProjectHeading, ProjectDescription, ProjectLink } from "../../globals"
 import { landingData } from "@/app/data/landing"
 import ProjectCard from "./projectCard"
@@ -27,8 +26,8 @@ export default function Engineer() {
     });
 
     return (
-        <LandingOptionWrapper>
-            <LandingContentWrapper onClick={() => setCardSelected(null)}>
+        <LandingOptionWrapper onClick={() => setCardSelected(null)}>
+            <LandingContentWrapper>
             <SectionText>Results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
             <ProjectSection>
                 {renderProjects}

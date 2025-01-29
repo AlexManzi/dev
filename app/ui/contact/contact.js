@@ -1,42 +1,104 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
-import { SelfItem, ContentWrapper, AssessmentContainer, SectionListWrapper } from "../globals"
-import { Octokit } from "octokit"
+import { ContentWrapper } from "../globals"
+import Image from "next/image"
+import { Outfit } from '@next/font/google';
+import { ContactData } from "@/app/data/contact"
+import Link from "next/link"
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weights: ['300', '400', '500', '600', '700', '800', '900'],
+});
 
 const ContactPageContent = styled.div`
     height: 100vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ContentArea = styled.div`
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+`;
+
+const Heading = styled.h1`
+    font-size: 2rem;
+    padding: 0 2rem;
+
+    @media (max-width: 580px) {
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 1.25rem;
+    }
+
+    @media (max-width: 385px) {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 321px) {
+        font-size: .95rem;
+    }
+
+    @media (max-width: 310px) {
+        font-size: .9rem;
+    }
+`;
+
+const SocialWrapper = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`;
+
+const SocialContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const SocialName = styled.div`
+    padding-top: .75rem;
+`;
+
+const AvatarIcon = styled(Image)`
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+`;
+
+const SocialLink = styled(Link)`
 `;
 
 export default function Contact() {
-    const [test, setTest] = useState(null);
 
-const octokit = new Octokit({
-  auth: process.env.NEXT_PUBLIC_GHSECRET, 
-});
-
-useEffect(() => {
-    const getUserData = async () => {
-        try {
-          const { data } = await octokit.rest.users.getAuthenticated();
-          setTest(data);
-        } catch (error) {
-          console.error('Error fetching user data:', error);
-          throw error;
-        }
-      };
-
-      getUserData()
-}, [])
-
-console.log(test)
-
+    const renderSocials = ContactData.socials.map((social, idx) => {
+        return (
+            <SocialLink key={idx} href={social.href} alt="Social Link">
+                <SocialContainer>
+                    <AvatarIcon src={social.avatar} alt="Social Icon"/>
+                    <SocialName>{social.name}</SocialName>
+                </SocialContainer>
+            </SocialLink>
+        )
+    })
+    
     return (
-        <ContentWrapper>
+        <ContentWrapper className={outfit.className}>
             <ContactPageContent>
-
+                <ContentArea>
+                    <Heading>Lets Build Cool Stuff - Find Me Here</Heading>
+                    <SocialWrapper>
+                        {renderSocials}
+                    </SocialWrapper>
+                </ContentArea>
             </ContactPageContent>
         </ContentWrapper>
     )

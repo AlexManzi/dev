@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import Typewriter from "typewriter-effect"
 import { SelfDiv, SelfItem, ContentWrapper, AssessmentContainer, SectionListWrapper, SectionListItem } from "../globals"
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
@@ -11,7 +10,7 @@ import { Outfit } from '@next/font/google';
 
 const outfit = Outfit({
   subsets: ['latin'],
-  weights: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weights: ['300', '400', '500', '600', '700', '800', '900'],
 });
 
 const LandingContentWrapper = styled.div`
@@ -83,8 +82,6 @@ const LandingHeaderText = styled.h1`
     }
 `;
 
-
-
 export default function Landing() {
     const selfItemArray = ["Brand Builder", "Fullstack Engineer", "AI Expert"];
     const [activeOption, setActiveOption] = useState(selfItemArray[1]);
@@ -125,8 +122,6 @@ export default function Landing() {
     };
 
     //Build user experiences, launch brands, and I blank
-
-    console.log(activeOption)
 
     return (
         <ContentWrapper className={outfit.className}>

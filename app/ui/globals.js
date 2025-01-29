@@ -153,7 +153,7 @@ export const SectionListItem = styled.h2`
     user-select: ${(props) => props.$display ? 'auto' : 'none'};
     
     @media (max-width: 1200px) {
-        font-size: calc(100vw / 60);
+        font-size: calc(100vw / 66);
     }
 
     @media (max-width: 950px) {
