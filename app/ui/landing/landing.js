@@ -6,7 +6,7 @@ import { SelfDiv, SelfItem, ContentWrapper, AssessmentContainer, SectionListWrap
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
 import Engineer from "./landingOptions/engineer"
-import { Outfit } from '@next/font/google';
+import { Outfit } from 'next/font/google';
 
 const outfit = Outfit({
   subsets: ['latin'],

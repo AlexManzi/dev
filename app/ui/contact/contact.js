@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 import { ContentWrapper, ProjectLink } from "../globals"
 import Image from "next/image"
-import { Outfit } from '@next/font/google';
+import { Outfit } from 'next/font/google';
 import { ContactData } from "@/app/data/contact"
 import Link from "next/link"
 
