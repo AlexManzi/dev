@@ -23,73 +23,12 @@ export const ContentWrapper = styled.div`
 export const SelfDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: ${(props) => {
-    if (props.$active === "Brand Builder") return '5.1rem';
-    if (props.$active === "AI Expert") return '-5rem';
-    return '0';
-    }};
-    transition: all .25s ease;
-    
-    @media (max-width: 1200px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.5rem';
-            if (props.$active === "AI Expert") return '-4.4rem';
-            return '0';
-        }};
-    }
-
-    @media (max-width: 1020px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.2rem';
-            if (props.$active === "AI Expert") return '-4.1rem';
-            return '0';
-        }};
-    }
-
-    @media (max-width: 965px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.1rem';
-            if (props.$active === "AI Expert") return '-4rem';
-            return '0';
-        }};
-    }
-
-    @media (max-width: 950px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '5.2rem';
-            if (props.$active === "AI Expert") return '-5rem';
-            return '0';
-        }};
-    }
-
-    @media (max-width: 500px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.16rem';
-            if (props.$active === "AI Expert") return '-4.17rem';
-            return '0';
-        }};
-    }
-
-    @media (max-width: 395px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '3.65rem';
-            if (props.$active === "AI Expert") return '-3.66rem';
-            return '0';
-        }};
-    }
-
-    @media (max-width: 366px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '3.2rem';
-            if (props.$active === "AI Expert") return '-3.15rem';
-            return '0';
-        }};
-    }
+    justify-content: ${(props) => !props.$displayAllOptions && props.$ego === "Brand Builder" ? 'end' : 'center'};
 `;
 
 export const SelfItem = styled.h1`
     display: ${(props) => !props.$displayAllOptions && props.$ego === "Brand Builder" || !props.$displayAllOptions && props.$ego === "AI Expert" ? 'none' : 'flex'};
-    color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : 'rgba(0,0,0, .3)'};
+    color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : '#B2B2B2'};
     cursor: pointer;
     width: max-content;
     transition: ${(props) => !props.$displayAllOptions ? 'all .2s ease' : 'all .2s ease'};
@@ -142,7 +81,9 @@ export const SectionListWrapper = styled.div`
     @media (max-width: 950px) {
         width: 100%;
         padding-left: 0;
-        justify-content: center;
+        margin-top: 18rem;
+        left: 2rem;
+        justify-content: start;
     }
 `;
 

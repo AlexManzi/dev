@@ -23,7 +23,7 @@ const LandingContentWrapper = styled.div`
 
     @media (max-width: 950px) {
         width: 100%;
-        height: 45vh;
+        height: 50vh;
         padding: 0;
         justify-content: center;
     }
