@@ -12,6 +12,7 @@ export default function ProjectCard({ project, cardSelected, setCardSelected, id
             <ProjectBioAreaMobile $cardselected={cardSelected === idx ? true : false}>
                 <ProjectHeading $show={project}>{project ? project.name : ''}</ProjectHeading>
                 <ProjectDescription $show={project}>{project ? project.description: ''}</ProjectDescription>
+                <ProjectDescription $show={project}>{project ? project.tech: ''}</ProjectDescription>
                 <ProjectLink  passHref={true} href={project ? project.link : '/'}  $show={project}>{project? 'See this app live' : ''}</ProjectLink>
             </ProjectBioAreaMobile>
         </ProjectItemWrapper>

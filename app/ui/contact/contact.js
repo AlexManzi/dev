@@ -24,6 +24,7 @@ const ContentArea = styled.div`
     flex-direction: column;
     gap: 3rem;
     align-items: center;
+    text-align: center;
 `;
 
 const Heading = styled.h1`

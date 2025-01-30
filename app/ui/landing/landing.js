@@ -63,13 +63,13 @@ const LandingHeaderText = styled.h1`
     }
 
     @media (max-width: 500px) {
-         font-size: 1.65rem;
-         padding-right: .45rem;
+         font-size: 1.6rem;
+         padding-right: .4rem;
     }
 
     @media (max-width: 395px) {
-         font-size: 1.5rem;
-         padding-right: .4rem;
+         font-size: 1.45rem;
+         padding-right: .375rem;
     }
 
     @media (max-width: 366px) {
