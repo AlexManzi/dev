@@ -23,7 +23,68 @@ export const ContentWrapper = styled.div`
 export const SelfDiv = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: ${(props) => !props.$displayAllOptions && props.$ego === "Brand Builder" ? 'end' : 'center'};
+    margin-top: ${(props) => {
+    if (props.$active === "Brand Builder") return '81px';
+    if (props.$active === "AI Expert") return '-81px';
+    return '0';
+    }};
+    transition: all .25s ease;
+    
+    @media (max-width: 1200px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '68px';
+            if (props.$active === "AI Expert") return '-68px';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 1020px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '64px';
+            if (props.$active === "AI Expert") return '-64px';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 975px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '62px';
+            if (props.$active === "AI Expert") return '-62px';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 950px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '81px';
+            if (props.$active === "AI Expert") return '-81px';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 500px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '64px';
+            if (props.$active === "AI Expert") return '-64px';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 395px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '58px';
+            if (props.$active === "AI Expert") return '-58px';
+            return '0';
+        }};
+    }
+
+    @media (max-width: 366px) {
+        margin-top: ${(props) => {
+            if (props.$active === "Brand Builder") return '50px';
+            if (props.$active === "AI Expert") return '-50px';
+            return '0';
+        }};
+    }
 `;
 
 export const SelfItem = styled.h1`
@@ -39,15 +100,15 @@ export const SelfItem = styled.h1`
     }
 
     @media (max-width: 1200px) {
-        font-size: 1.75rem;
+        font-size: 1.7rem;
     }
 
     @media (max-width: 1020px) {
-        font-size: 1.65rem;
+        font-size: 1.6rem;
     }
     
-    @media (max-width: 965px) {
-        font-size: 1.6rem;
+    @media (max-width: 975px) {
+        font-size: 1.54rem;
     }
 
     @media (max-width: 950px) {
