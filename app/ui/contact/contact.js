@@ -4,14 +4,11 @@ import React from "react"
 import styled from "styled-components"
 import { ContentWrapper, ProjectLink } from "../globals"
 import Image from "next/image"
-import { Outfit } from 'next/font/google';
 import { ContactData } from "@/app/data/contact"
 import Link from "next/link"
+import localFont from 'next/font/local';
 
-const outfit = Outfit({
-  subsets: ['latin'],
-  weights: ['300', '400', '500', '600', '700', '800', '900'],
-});
+const outfit = localFont({ src: '../../font/Outfit-VariableFont_wght.ttf'})
 
 const ContactPageContent = styled.div`
     height: 100vh;

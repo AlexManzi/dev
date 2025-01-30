@@ -4,17 +4,12 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Outfit } from '@next/font/google';
+import localFont from 'next/font/local';
 
-const outfit = Outfit({
-  subsets: ['latin'],
-  weights: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
+const outfit = localFont({ src: '../font/Outfit-VariableFont_wght.ttf'})
 
 const NavWrapper = styled.div`
     position: relative;
-    // height: 64px;
-    // width: 100%;
 `;
 
 const NavItems = styled.div`
@@ -108,8 +103,6 @@ const NavLink = styled(Link)`
 export default function Navbar() {
     const[linkActive, setLinkActive] = useState(null);
     const path = usePathname();
-
-    console.log(path)
 
     useEffect(() => {
         if (path === "/") {

@@ -6,12 +6,9 @@ import { SelfDiv, SelfItem, ContentWrapper, AssessmentContainer, SectionListWrap
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
 import Engineer from "./landingOptions/engineer"
-import { Outfit } from 'next/font/google';
+import localFont from 'next/font/local';
 
-const outfit = Outfit({
-  subsets: ['latin'],
-  weights: ['300', '400', '500', '600', '700', '800', '900'],
-});
+const outfit = localFont({ src: '../../font/Outfit-VariableFont_wght.ttf'})
 
 const LandingContentWrapper = styled.div`
     display: flex;
