@@ -28,7 +28,7 @@ export default function Engineer() {
     return (
         <LandingOptionWrapper onClick={() => setCardSelected(null)}>
             <LandingContentWrapper>
-            <SectionText>Results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
+            <SectionText>Results-driven Software Engineer passionate about pushing the boundaries of technology to deliver innovative solutions that excite and delight users</SectionText>
             <ProjectSection>
                 {renderProjects}
             </ProjectSection>
