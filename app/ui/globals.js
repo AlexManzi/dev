@@ -64,16 +64,16 @@ export const SelfDiv = styled.div`
 
     @media (max-width: 500px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.2rem';
-            if (props.$active === "AI Expert") return '-4.1rem';
+            if (props.$active === "Brand Builder") return '4.16rem';
+            if (props.$active === "AI Expert") return '-4.17rem';
             return '0';
         }};
     }
 
     @media (max-width: 395px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '3.8rem';
-            if (props.$active === "AI Expert") return '-3.7rem';
+            if (props.$active === "Brand Builder") return '3.65rem';
+            if (props.$active === "AI Expert") return '-3.66rem';
             return '0';
         }};
     }
@@ -116,11 +116,11 @@ export const SelfItem = styled.h1`
     }
 
     @media (max-width: 500px) {
-         font-size: 1.65rem;
+         font-size: 1.6rem;
     }
 
     @media (max-width: 395px) {
-         font-size: 1.5rem;
+         font-size: 1.45rem;
     }
     
     @media (max-width: 366px) {
@@ -302,8 +302,11 @@ export const ProjectBioAreaMobile = styled.div`
     @media (max-width: 950px) {
         display: ${(props) => props.$cardselected ? 'flex' : 'none'};
         flex-direction: column;
-        padding: 2rem 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
         color: black;
+        gap: .5rem;
     }
 `;
 
