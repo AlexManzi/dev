@@ -30,7 +30,7 @@ export default function AiExpert() {
     return (
         <LandingOptionWrapper>
             <LandingContentWrapper onClick={() => setCardSelected(null)}>
-            <SectionText>Results-driven software engineer with a proven track record of delivering engaging frontend user experiences</SectionText>
+            <SectionText>developer passionate about leveraging cutting-edge technology, I specialize in harnessing the power of AI to create innovative and impactful applications</SectionText>
             <ProjectSection id="oneItem">
                 {renderProjects}
             </ProjectSection>

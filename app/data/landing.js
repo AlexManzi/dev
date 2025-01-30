@@ -13,23 +13,24 @@ export const landingData = {
         {
             name: "CNYCN Site",
             image: CenSite,
-            description: "Description of the center site here",
+            description: "Center for New York City Neighborhoods' main website.",
+            tech: "Fullstack Next.js app built with React, Javascript, styled-components, Google Maps + Places API, Wordpress API, and Salesforce",
             link: "https://cnycn.org/",
-            tech: ""
         },
         {
             name: "NYC District Profiles",
             image: districtProfiles,
-            description: "Description of District Profiles here",
+            description: "",
+            tech: "Fullstack Microsite built with React, Javascript, styled-components, and Google Maps + Places API",
             link: "https://cnycn.org/district-profiles",
             tech: ""
         },
         {
             name: "Impact Report",
             image: impactReport,
-            description: "Description of the Impact Report here",
+            description: "Impact Report of the reach of the Center New York City Neighborhoods' work in 2020-2021",
+            tech: "Fullstack Next.js app built with React, Javascript, styled-components, and Google Maps + Places API",
             link: "https://cnycn.org/impact-report",
-            tech: ""
         },
     ],   
     brandProjects: [
@@ -37,31 +38,31 @@ export const landingData = {
             name: "Bronx & Brooklyn Energy Hub",
             image: energyHub,
             description: "Description of the Energy Hub here",
+            tech: "React app built with Javascipt, styled-components, and Salesforce",
             link: "https://bxbkenergyhub.org/en-US/",
-            tech: ""
         },
         {
             name: "FloodHelpNY",
             image: floodHelp,
-            description: "Description of Floodhelp here",
+            description: "",
             link: "https://www.floodhelpny.org/",
-            tech: ""
+            tech: "Fullstack Ruby on Rails app built with Rails, React, Javascript, styled-components, and Google Maps + Places API"
         },
         {
             name: "Black Homeownership Project",
             image: bhp,
-            description: "Description of the Black Homeownership Project",
+            description: "The Black Homeownership Project recognizes that generational wealth is under threat. We talked to Black homeowners across the City about how to change that.",
             link: "https://bhp.cnycn.org/",
-            tech: ""
+            tech: "React app built with Javascript, styled-components, and Salesforce"
         }
     ],
     aiProjects: [
         {
             name: "Mangia.Ai",
             image: mangiaAi,
-            description: "Description of the Energy Hub here",
+            description: "Meal planning and money saving AI companion.",
             link: "",
-            tech: ""
+            tech: "Fullstack Next.js app connected to OpenAI built with React, Javascipt, Next-Auth, styled-components, AWS, and DynamoDB"
         }
     ],
 }
