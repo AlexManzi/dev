@@ -24,64 +24,64 @@ export const SelfDiv = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: ${(props) => {
-    if (props.$active === "Brand Builder") return '5.1rem';
-    if (props.$active === "AI Expert") return '-5rem';
+    if (props.$active === "Brand Builder") return '81px';
+    if (props.$active === "AI Expert") return '-81px';
     return '0';
     }};
     transition: all .25s ease;
     
     @media (max-width: 1200px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.5rem';
-            if (props.$active === "AI Expert") return '-4.4rem';
+            if (props.$active === "Brand Builder") return '68px';
+            if (props.$active === "AI Expert") return '-68px';
             return '0';
         }};
     }
 
     @media (max-width: 1020px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.2rem';
-            if (props.$active === "AI Expert") return '-4.1rem';
+            if (props.$active === "Brand Builder") return '64px';
+            if (props.$active === "AI Expert") return '-64px';
             return '0';
         }};
     }
 
-    @media (max-width: 965px) {
+    @media (max-width: 975px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.1rem';
-            if (props.$active === "AI Expert") return '-4rem';
+            if (props.$active === "Brand Builder") return '62px';
+            if (props.$active === "AI Expert") return '-62px';
             return '0';
         }};
     }
 
     @media (max-width: 950px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '5.2rem';
-            if (props.$active === "AI Expert") return '-5rem';
+            if (props.$active === "Brand Builder") return '81px';
+            if (props.$active === "AI Expert") return '-81px';
             return '0';
         }};
     }
 
     @media (max-width: 500px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '4.16rem';
-            if (props.$active === "AI Expert") return '-4.17rem';
+            if (props.$active === "Brand Builder") return '64px';
+            if (props.$active === "AI Expert") return '-64px';
             return '0';
         }};
     }
 
     @media (max-width: 395px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '3.65rem';
-            if (props.$active === "AI Expert") return '-3.66rem';
+            if (props.$active === "Brand Builder") return '58px';
+            if (props.$active === "AI Expert") return '-58px';
             return '0';
         }};
     }
 
     @media (max-width: 366px) {
         margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '3.2rem';
-            if (props.$active === "AI Expert") return '-3.15rem';
+            if (props.$active === "Brand Builder") return '50px';
+            if (props.$active === "AI Expert") return '-50px';
             return '0';
         }};
     }
@@ -89,7 +89,7 @@ export const SelfDiv = styled.div`
 
 export const SelfItem = styled.h1`
     display: ${(props) => !props.$displayAllOptions && props.$ego === "Brand Builder" || !props.$displayAllOptions && props.$ego === "AI Expert" ? 'none' : 'flex'};
-    color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : 'rgba(0,0,0, .3)'};
+    color: ${(props) => props.$ego === props.$active ? 'rgba(0,0,0, 1)' : '#B2B2B2'};
     cursor: pointer;
     width: max-content;
     transition: ${(props) => !props.$displayAllOptions ? 'all .2s ease' : 'all .2s ease'};
@@ -100,15 +100,15 @@ export const SelfItem = styled.h1`
     }
 
     @media (max-width: 1200px) {
-        font-size: 1.75rem;
+        font-size: 1.7rem;
     }
 
     @media (max-width: 1020px) {
-        font-size: 1.65rem;
+        font-size: 1.6rem;
     }
     
-    @media (max-width: 965px) {
-        font-size: 1.6rem;
+    @media (max-width: 975px) {
+        font-size: 1.54rem;
     }
 
     @media (max-width: 950px) {
@@ -142,7 +142,9 @@ export const SectionListWrapper = styled.div`
     @media (max-width: 950px) {
         width: 100%;
         padding-left: 0;
-        justify-content: center;
+        margin-top: 18rem;
+        left: 2rem;
+        justify-content: start;
     }
 `;
 

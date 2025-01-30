@@ -23,7 +23,7 @@ const LandingContentWrapper = styled.div`
 
     @media (max-width: 950px) {
         width: 100%;
-        height: 45vh;
+        height: 50vh;
         padding: 0;
         justify-content: center;
     }
@@ -47,15 +47,16 @@ const LandingHeaderText = styled.h1`
     padding-right: .5rem;
 
     @media (max-width: 1200px) {
-        font-size: 1.75rem;
+        font-size: 1.7rem;
     }
 
-    @media (max-width: 1020px) {
-        font-size: 1.65rem;
-    }
-
-    @media (max-width: 965px) {
+    @media (max-width: 1030px) {
         font-size: 1.6rem;
+        padding-right: .45rem;
+    }
+
+    @media (max-width: 975px) {
+        font-size: 1.54rem;
     }
 
     @media (max-width: 950px) {
