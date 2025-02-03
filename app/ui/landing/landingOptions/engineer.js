@@ -28,7 +28,7 @@ export default function Engineer() {
     return (
         <LandingOptionWrapper onClick={() => setCardSelected(null)}>
             <LandingContentWrapper>
-            <SectionText>As a Fullstack Engineer, I'm passionate about pushing the boundaries of technology to deliver innovative solutions that excite and delight users</SectionText>
+            <SectionText>As a Fullstack Engineer, I&apos;m passionate about pushing the boundaries of technology to deliver innovative solutions that excite and delight users</SectionText>
             <ProjectSection>
                 {renderProjects}
             </ProjectSection>
