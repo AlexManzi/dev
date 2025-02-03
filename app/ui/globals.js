@@ -21,8 +21,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export const SelfDiv = styled.div`
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    // flex-direction: column;
     margin-top: ${(props) => {
     if (props.$active === "Brand Builder") return '81px';
     if (props.$active === "AI Expert") return '-81px';
@@ -130,8 +130,7 @@ export const SelfItem = styled.h1`
 
 export const SectionListWrapper = styled.div`
     display: flex;
-    // padding-left: 1.5rem;
-    margin-top: 15rem;
+    margin-top: 18rem;
     display: flex;
     width: 100%;
     left: 2%;
@@ -142,7 +141,6 @@ export const SectionListWrapper = styled.div`
     @media (max-width: 950px) {
         width: 100%;
         padding-left: 0;
-        margin-top: 18rem;
         left: 2rem;
         justify-content: start;
     }
@@ -152,6 +150,8 @@ export const SectionListItem = styled.h2`
     font-size: 1.1rem;
     color: ${(props) => props.$display ? "black" : "white"};
     transition: all .3s ease;
+    text-align: center;
+    padding: 0 3rem;
     user-select: ${(props) => props.$display ? 'auto' : 'none'};
     
     @media (max-width: 1200px) {
@@ -160,10 +160,13 @@ export const SectionListItem = styled.h2`
 
     @media (max-width: 950px) {
         font-size: 1rem;
+        padding: 0;
+        text-align: start;
     }
 
     @media (max-width: 500px) {
         font-size: .9rem;
+         width: 80%;
     }
 
     @media (max-width: 400px) {

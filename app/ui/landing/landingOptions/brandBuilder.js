@@ -28,7 +28,7 @@ export default function BrandBuilder() {
     return (
         <LandingOptionWrapper>
             <LandingContentWrapper onClick={() => setCardSelected(null)}>
-            <SectionText>As a Software Engineer, I craft unforgettable user experiences for applications that captivate and engage thousands of users</SectionText>
+            <SectionText>As a Brand Builder, I craft and deliver unforgettable user experiences for applications that captivate and engage thousands of users</SectionText>
             <ProjectSection id="twoItems">
                 {renderProjects}
             </ProjectSection>

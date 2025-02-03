@@ -13,17 +13,16 @@ export const landingData = {
         {
             name: "CNYCN Site",
             image: CenSite,
-            description: "Center for New York City Neighborhoods' main website.",
+            description: "Center for New York City Neighborhoods' main website",
             tech: "Fullstack Next.js app built with React, Javascript, styled-components, Google Maps + Places API, Wordpress API, and Salesforce",
             link: "https://cnycn.org/",
         },
         {
             name: "NYC District Profiles",
             image: districtProfiles,
-            description: "",
+            description: "Enter or select your address to get demographic and economic information about your neighborhood",
             tech: "Fullstack Microsite built with React, Javascript, styled-components, and Google Maps + Places API",
             link: "https://cnycn.org/district-profiles",
-            tech: ""
         },
         {
             name: "Impact Report",
@@ -37,14 +36,14 @@ export const landingData = {
         {
             name: "Bronx & Brooklyn Energy Hub",
             image: energyHub,
-            description: "Description of the Energy Hub here",
-            tech: "React app built with Javascipt, styled-components, and Salesforce",
+            description: "New York State led resource for connecting New Yorker to the green energy revolution",
+            tech: "React app built with Javascipt, styled-components, Wordpress API, and Salesforce",
             link: "https://bxbkenergyhub.org/en-US/",
         },
         {
             name: "FloodHelpNY",
             image: floodHelp,
-            description: "",
+            description: "New York City led resource to help New Yorkers understand and respond to the growing flood risk",
             link: "https://www.floodhelpny.org/",
             tech: "Fullstack Ruby on Rails app built with Rails, React, Javascript, styled-components, and Google Maps + Places API"
         },

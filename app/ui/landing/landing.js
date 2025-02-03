@@ -131,7 +131,7 @@ export default function Landing() {
                 </SelfDiv>
             </LandingHeaderWrapper>
             <SectionListWrapper $active={activeOption} $display={displayAllOptions}>
-                    <SectionListItem $display={displayAllOptions}>React - Next.js - JavaScript - CSS -  OpenAI</SectionListItem>
+                    <SectionListItem $display={displayAllOptions}>React - Next.js - JavaScript - CSS -  OpenAI - Carto - AWS</SectionListItem>
             </SectionListWrapper>
             </LandingContentWrapper>
             <AssessmentContainer $displayPanel={displayPanel}>
