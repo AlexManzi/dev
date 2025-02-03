@@ -28,14 +28,14 @@ export default function Engineer() {
     return (
         <LandingOptionWrapper onClick={() => setCardSelected(null)}>
             <LandingContentWrapper>
-            <SectionText>Results-driven Software Engineer passionate about pushing the boundaries of technology to deliver innovative solutions that excite and delight users</SectionText>
+            <SectionText>As a Fullstack Engineer, I'm passionate about pushing the boundaries of technology to deliver innovative solutions that excite and delight users</SectionText>
             <ProjectSection>
                 {renderProjects}
             </ProjectSection>
             <ProjectBioArea $cardselected={cardSelected}>
                 <ProjectHeading $show={projectText}>{projectText ? projectText.name : ''}</ProjectHeading>
-                <ProjectDescription $show={projectText}>{projectText ? projectText.description: ''}</ProjectDescription>
-                <ProjectDescription $show={projectText}>{projectText ? projectText.tech: ''}</ProjectDescription>
+                <ProjectDescription $show={projectText}>{projectText ? projectText.description : ''}</ProjectDescription>
+                <ProjectDescription $show={projectText}>{projectText ? projectText.tech : ''}</ProjectDescription>
                 <ProjectLink target="_blank" passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app live' : ''}</ProjectLink>
             </ProjectBioArea>
             </LandingContentWrapper>
