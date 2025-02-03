@@ -255,6 +255,11 @@ export const ProjectItemWrapper = styled.div`
 
     &#oneCard {
         width: ${(props) => props.$isselected ? '58%' : '32.5%'};
+
+        @media (max-width: 950px) {
+        width: 100%;
+        height: auto;
+    }
     }
 
      @media (max-width: 950px) {

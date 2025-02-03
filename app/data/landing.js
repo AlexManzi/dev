@@ -60,7 +60,7 @@ export const landingData = {
             name: "Mangia.Ai",
             image: mangiaAi,
             description: "Meal planning and money saving AI companion.",
-            link: "",
+            link: "https://main.d3u77kxuh2gdz9.amplifyapp.com",
             tech: "Fullstack Next.js app connected to OpenAI built with React, Javascipt, Next-Auth, styled-components, AWS, and DynamoDB"
         }
     ],
