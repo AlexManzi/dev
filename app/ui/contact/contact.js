@@ -76,6 +76,56 @@ const AvatarIcon = styled(Image)`
 `;
 
 const SocialLink = styled(Link)`
+    display: flex;
+
+`;
+
+const DownloadLink = styled.p`
+    font-size: 1.1rem;
+    display: flex;
+    margin-top: -2rem;
+    justify-content: start;
+    align-items: center;
+    width: max-content;
+    padding-bottom: .2rem;
+    position: relative;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 20;
+    -webkit-transition: ease-out 0.3s;
+    -moz-transition: ease-out 0.3s;
+    transition: all 0.3s ease;
+    ${props => props.$show && css` animation: ${fadeIn} .5s ease-in-out; `};
+
+    &:hover {
+        color: rgb(26,135,251);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: black;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background-color: rgb(26,135,251);
+        transition: width 0.3s ease-out;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
 `;
 
 export default function Contact() {
@@ -89,7 +139,16 @@ export default function Contact() {
                 </SocialContainer>
             </SocialLink>
         )
-    })
+    });
+
+        const handleDownload = () => {
+          const link = document.createElement('a');
+          link.href = 'AlexManziResume.pdf';
+          link.download = 'Alex Manzi Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        };
     
     return (
         <ContentWrapper className={outfit.className}>
@@ -100,6 +159,7 @@ export default function Contact() {
                         {renderSocials}
                     </SocialWrapper>
                     <ProjectLink passHref={true} $show={true} href="https://www.credly.com/badges/0b037bc8-dc64-420c-b80c-8311d256ee7c/public_url">AWS Certified</ProjectLink>
+                    <DownloadLink onClick={handleDownload}>Resume</DownloadLink>
                 </ContentArea>
             </ContactPageContent>
         </ContentWrapper>
