@@ -159,7 +159,7 @@ export default function Contact() {
                         {renderSocials}
                     </SocialWrapper>
                     <ProjectLink passHref={true} $show={true} href="https://www.credly.com/badges/0b037bc8-dc64-420c-b80c-8311d256ee7c/public_url">AWS Certified</ProjectLink>
-                    <DownloadLink onClick={handleDownload}>Resume</DownloadLink>
+                    {/* <DownloadLink onClick={handleDownload}>Resume</DownloadLink> */}
                 </ContentArea>
             </ContactPageContent>
         </ContentWrapper>
