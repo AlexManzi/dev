@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { SelfDiv, SelfItem, ContentWrapper, AssessmentContainer, SectionListWrapper, SectionListItem } from "../globals"
+import { SelfDiv, SelfItem, ContentWrapper,  SelfItemsWrapper, AssessmentContainer, SectionListWrapper, SectionListItem } from "../globals"
 import AiExpert from "./landingOptions/aiExpert"
 import BrandBuilder from "./landingOptions/brandBuilder"
 import Engineer from "./landingOptions/engineer"
@@ -33,6 +33,8 @@ const LandingHeaderWrapper = styled.div`
     display: flex;
     align-items: center;
     width: 110%;
+    height: 200px;
+    position: relative;
 
     @media (max-width: 950px) {
         width: 100%;
@@ -45,6 +47,10 @@ const LandingHeaderText = styled.h1`
     font-size: 2rem;
     color: black;
     padding-right: .5rem;
+
+    &.hidden {
+        opacity: 0;
+    }
 
     @media (max-width: 1200px) {
         font-size: 1.7rem;
@@ -63,8 +69,13 @@ const LandingHeaderText = styled.h1`
          font-size: 2rem;
     }
 
+    @media (max-width: 600px) {
+         font-size: 1.7rem;
+        padding-right: .425rem;
+    }
+
     @media (max-width: 500px) {
-         font-size: 1.6rem;
+         font-size: 1.5rem;
          padding-right: .4rem;
     }
 
@@ -80,11 +91,16 @@ const LandingHeaderText = styled.h1`
     }
 `;
 
+const HeaderTextWrapper = styled.div`
+      height: 55%;
+`;
+
 export default function Landing() {
     const selfItemArray = ["Brand Builder", "Fullstack Engineer", "AI Expert"];
     const [activeOption, setActiveOption] = useState(selfItemArray[1]);
     const [displayPanel, setDisplayPanel] = useState(false);
     const [displayAllOptions, setDisplayAllOptions] = useState(false);
+    const [allowCssEffect, setAllowCssEffect] = useState(false);
 
     useEffect(() => {
         const timerOne = setTimeout(() => {
@@ -95,9 +111,15 @@ export default function Landing() {
             setDisplayAllOptions(true)
         }, 3400)
 
+        const timerTwoPartTwo = setTimeout(() => {
+            setAllowCssEffect(true)
+        }, 3405)
+
         return () => {
             clearTimeout(timerOne)
             clearTimeout(timerTwo)
+            clearTimeout(timerTwoPartTwo)
+
         }
     }, []);
 
@@ -125,10 +147,16 @@ export default function Landing() {
         <ContentWrapper className={outfit.className}>
             <LandingContentWrapper>
             <LandingHeaderWrapper>
+                <HeaderTextWrapper>
+                <LandingHeaderText className="hidden">Alex is a</LandingHeaderText>
                 <LandingHeaderText>Alex is a</LandingHeaderText>
-                <SelfDiv $active={activeOption}>
+                <LandingHeaderText className="hidden">Alex is a</LandingHeaderText>
+                </HeaderTextWrapper>
+                <SelfItemsWrapper $active={activeOption} $display={displayAllOptions} $allowCssEffect={allowCssEffect}>
+                <SelfDiv>
                     {renderSelfItems}
                 </SelfDiv>
+                </SelfItemsWrapper>
             </LandingHeaderWrapper>
             <SectionListWrapper $active={activeOption} $display={displayAllOptions}>
                     <SectionListItem $display={displayAllOptions}>React - Next.js - JavaScript - CSS -  OpenAI - Carto - AWS</SectionListItem>
