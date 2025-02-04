@@ -21,7 +21,7 @@ export const landingData = {
             name: "NYC District Profiles",
             image: districtProfiles,
             description: "Enter or select your address to get demographic and economic information about your neighborhood",
-            tech: "Fullstack Microsite built with React, Javascript, styled-components, and Google Maps + Places API",
+            tech: "Fullstack Microsite built with React, Javascript, styled-components, Carto, and Google Maps + Places API",
             link: "https://cnycn.org/district-profiles",
         },
         {
