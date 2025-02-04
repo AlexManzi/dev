@@ -22,67 +22,83 @@ export const ContentWrapper = styled.div`
 
 export const SelfDiv = styled.div`
     display: grid;
-    // flex-direction: column;
-    margin-top: ${(props) => {
-    if (props.$active === "Brand Builder") return '81px';
-    if (props.$active === "AI Expert") return '-81px';
-    return '0';
-    }};
     transition: all .25s ease;
-    
-    @media (max-width: 1200px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '68px';
-            if (props.$active === "AI Expert") return '-68px';
-            return '0';
-        }};
-    }
+`;
 
-    @media (max-width: 1020px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '64px';
-            if (props.$active === "AI Expert") return '-64px';
-            return '0';
+export const SelfItemsWrapper = styled.div`
+        height: ${(props) => {
+        if (props.$active === "Brand Builder") return '14%';
+        if (props.$active === "AI Expert") return '95%';
+        return !props.$display && props.$active === "Fullstack Engineer" ? '14%' : '55%';
         }};
-    }
 
-    @media (max-width: 975px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '62px';
-            if (props.$active === "AI Expert") return '-62px';
-            return '0';
+    transition: ${(props) => {
+        if (props.$active === "Brand Builder") return 'all .25s ease';
+        if (props.$active === "AI Expert") return 'all .25s ease';
+        return props.$allowCssEffect && props.$active === "Fullstack Engineer" ? 'all .25s ease' : '';
         }};
-    }
 
-    @media (max-width: 950px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '81px';
-            if (props.$active === "AI Expert") return '-81px';
-            return '0';
+        @media (max-width: 1200px) {
+            height: ${(props) => {
+            if (props.$active === "Brand Builder") return '21%';
+            if (props.$active === "AI Expert") return '89%';
+            return !props.$display && props.$active === "Fullstack Engineer" ? '20.5%' : '55%';
+            }};
+        }
+
+        @media (max-width: 1030px) {
+            height: ${(props) => {
+            if (props.$active === "Brand Builder") return '23%';
+            if (props.$active === "AI Expert") return '87%';
+            return !props.$display && props.$active === "Fullstack Engineer" ? '23%' : '55%';
+            }};
+        }
+        
+        @media (max-width: 975px) {
+            height: ${(props) => {
+            if (props.$active === "Brand Builder") return '24%';
+            if (props.$active === "AI Expert") return '86%';
+            return !props.$display && props.$active === "Fullstack Engineer" ? '24%' : '55%';
+            }};
+        }
+
+        @media (max-width: 950px) {
+            height: ${(props) => {
+            if (props.$active === "Brand Builder") return '7%';
+            if (props.$active === "AI Expert") return '103%';
+            return !props.$display && props.$active === "Fullstack Engineer" ? '7%' : '55%';
+            }};
+        }
+
+        @media (max-width: 600px) {
+         height: ${(props) => {
+        if (props.$active === "Brand Builder") return '14%';
+        if (props.$active === "AI Expert") return '95.5%';
+        return !props.$display && props.$active === "Fullstack Engineer" ? '14.5%' : '55%';
         }};
-    }
+        }
 
-    @media (max-width: 500px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '64px';
-            if (props.$active === "AI Expert") return '-64px';
-            return '0';
+     @media (max-width: 500px) {
+        height: ${(props) => {
+        if (props.$active === "Brand Builder") return '18%';
+        if (props.$active === "AI Expert") return '92%';
+        return !props.$display && props.$active === "Fullstack Engineer" ? '18%' : '55%';
         }};
     }
 
     @media (max-width: 395px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '58px';
-            if (props.$active === "AI Expert") return '-58px';
-            return '0';
+        height: ${(props) => {
+            if (props.$active === "Brand Builder") return '18%';
+            if (props.$active === "AI Expert") return '92%';
+            return !props.$display && props.$active === "Fullstack Engineer" ? '18%' : '55%';
         }};
     }
 
     @media (max-width: 366px) {
-        margin-top: ${(props) => {
-            if (props.$active === "Brand Builder") return '50px';
-            if (props.$active === "AI Expert") return '-50px';
-            return '0';
+        height: ${(props) => {
+            if (props.$active === "Brand Builder") return '25.5%';
+            if (props.$active === "AI Expert") return '85%';
+            return !props.$display && props.$active === "Fullstack Engineer" ? '25.5%' : '55%';
         }};
     }
 `;
@@ -103,7 +119,7 @@ export const SelfItem = styled.h1`
         font-size: 1.7rem;
     }
 
-    @media (max-width: 1020px) {
+    @media (max-width: 1030px) {
         font-size: 1.6rem;
     }
     
@@ -115,8 +131,12 @@ export const SelfItem = styled.h1`
          font-size: 2rem;
     }
 
+    @media (max-width: 600px) {
+         font-size: 1.7rem;
+    }
+
     @media (max-width: 500px) {
-         font-size: 1.6rem;
+         font-size: 1.5rem;
     }
 
     @media (max-width: 395px) {
