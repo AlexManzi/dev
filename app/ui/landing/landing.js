@@ -105,15 +105,15 @@ export default function Landing() {
     useEffect(() => {
         const timerOne = setTimeout(() => {
             setDisplayPanel(true)
-        }, 1600)
+        }, 600)
 
         const timerTwo = setTimeout(() => {
             setDisplayAllOptions(true)
-        }, 3400)
+        }, 1500)
 
         const timerTwoPartTwo = setTimeout(() => {
             setAllowCssEffect(true)
-        }, 3405)
+        }, 1505)
 
         return () => {
             clearTimeout(timerOne)

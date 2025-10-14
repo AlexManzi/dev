@@ -3,7 +3,9 @@ import impactReport from "../../public/impactReport.webp"
 import districtProfiles from "../../public/districtProfiles.webp"
 import energyHub from "../../public/energyHub.webp"
 import mangiaAi from "../../public/mangiaAi.webp"
+import haiku_me from "../../public/haiku_me.webp"
 import floodHelp from "../../public/floodHelp.webp"
+import codexHelper from "../../public/CodexHelper.webp"
 import bhp from "../../public/bhp.webp"
 
 
@@ -62,6 +64,20 @@ export const landingData = {
             description: "Meal planning and money saving AI companion.",
             link: "https://main.d3u77kxuh2gdz9.amplifyapp.com",
             tech: "Fullstack Next.js app connected to OpenAI built with React, Javascipt, Next-Auth, styled-components, AWS, and DynamoDB"
+        },
+             {
+            name: "Codex-Helper",
+            image: codexHelper,
+            description: "Budget Friendly CLI tool that uses OpenAI's GPT 5 model to refactor code for readability, performance, and modern best practices.",
+            link: "https://alexmanzi.github.io/codex-helper/",
+            tech: "Fullstack Next.js app connected to OpenAI built with React, Typescript"
+        },
+        {
+            name: "Haiku_me",
+            image: haiku_me,
+            description: "AI Text to Speech Haikus to meet any emotion",
+            link: "https://github.com/AlexManzi/haiku_me",
+            tech: "Fullstack Next.js app connected to OpenAI built with React, Typescript, Next-Auth, styled-components, AWS, and AWS Polly"
         }
     ],
 }

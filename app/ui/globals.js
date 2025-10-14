@@ -257,6 +257,11 @@ export const ProjectSection = styled.div`
     padding-right: 2rem;
     justify-content: space-between;
 
+    &#twoItem {
+        gap: .75rem;
+        justify-content: start;
+    }
+
     @media (max-width: 950px) {
         flex-direction: column;
         align-items: center;
@@ -270,7 +275,7 @@ export const ProjectItemWrapper = styled.div`
     width: ${(props) => props.$isselected ? '85%' : '32.5%'};
     height: ${(props) => props.$isselected ? '100%' : 'auto'};
     position: relative;
-    transition: ease .2s all;
+    transition: ease .2s width;
     animation: ${fadeIn} .5s ease-in;
 
     &#oneCard {

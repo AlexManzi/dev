@@ -31,14 +31,14 @@ export default function AiExpert() {
         <LandingOptionWrapper>
             <LandingContentWrapper onClick={() => setCardSelected(null)}>
             <SectionText>As an AI expert, I specialize in harnessing the power of AI to create innovative and impactful applications</SectionText>
-            <ProjectSection id="oneItem">
+            <ProjectSection id="twoItem">
                 {renderProjects}
             </ProjectSection>
             <ProjectBioArea $cardselected={cardSelected}>
                 <ProjectHeading $show={projectText}>{projectText ? projectText.name : ''}</ProjectHeading>
                 <ProjectDescription $show={projectText}>{projectText ? projectText.description: ''}</ProjectDescription>
                 <ProjectDescription $show={projectText}>{projectText ? projectText.tech: ''}</ProjectDescription>
-                <ProjectLink  target="_blank" passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app live' : ''}</ProjectLink>
+                <ProjectLink target="_blank" passHref={true} href={projectText ? projectText.link : '/'}  $show={projectText}>{projectText ? 'See this app' : ''}</ProjectLink>
             </ProjectBioArea>
             </LandingContentWrapper>
         </LandingOptionWrapper>
