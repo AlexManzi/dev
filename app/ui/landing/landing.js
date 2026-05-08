@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useMemo, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import localFont from "next/font/local";
@@ -9,6 +9,46 @@ import { landingData } from "@/app/data/landing";
 import LandingHeader from "@/public/LandingHeader.webp";
 
 const outfit = localFont({ src: "../../font/Outfit-VariableFont_wght.ttf" });
+
+const overlayFadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const overlayFadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+`;
+
+const modalFadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const modalFadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+`;
 
 const PageShell = styled.main`
   width: 100%;
@@ -208,7 +248,7 @@ const StatLabel = styled.p`
 
 const StatValue = styled.p`
   margin-top: 0.35rem;
-  font-size: 1rem;
+  font-size: 0.94rem;
   line-height: 1.5;
 `;
 
@@ -243,7 +283,7 @@ const SectionText = styled.p`
 const FeaturedGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.35rem;
+  gap: 1.65rem;
 
   @media (max-width: 960px) {
     grid-template-columns: 1fr;
@@ -258,7 +298,7 @@ const ProjectGrid = styled.div`
 
   @media (max-width: 960px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.25rem;
   }
 `;
 
@@ -275,7 +315,7 @@ const CardImageWrap = styled.div`
   width: 100%;
   aspect-ratio: 16 / 8.8;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.7);
 `;
 
@@ -347,19 +387,256 @@ const TechTag = styled.span`
   font-size: 0.82rem;
 `;
 
-const CardLink = styled.a`
+const CardActionButton = styled.button`
   width: fit-content;
   margin-top: 0.5rem;
   font-weight: 600;
+  font-size: 1rem;
   color: var(--foreground);
   padding-bottom: 0.2rem;
+  background: transparent;
+  border: 0;
   border-bottom: 1px solid rgba(43, 47, 51, 0.24);
   transition: border-color 180ms ease, color 180ms ease;
   align-self: end;
+  cursor: pointer;
 
   &:hover {
     color: #35587c;
     border-color: #35587c;
+  }
+`;
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(20, 27, 35, 0.38);
+  backdrop-filter: blur(1px);
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  animation: ${(props) => (props.$closing ? overlayFadeOut : overlayFadeIn)}
+    120ms ease-out forwards;
+
+  @media (max-width: 720px) {
+    align-items: end;
+    padding: 0.75rem;
+  }
+`;
+
+const ModalCard = styled.div`
+  width: min(920px, 100%);
+  max-height: min(88vh, 900px);
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(43, 47, 51, 0.28) transparent;
+  border-radius: 8px;
+  background: rgba(252, 253, 255, 0.96);
+  border: 1px solid rgba(43, 47, 51, 0.08);
+  box-shadow: 0 28px 70px rgba(15, 23, 31, 0.18);
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  animation: ${(props) => (props.$closing ? modalFadeOut : modalFadeIn)} 140ms
+    ease-out forwards;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(43, 47, 51, 0.22);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(43, 47, 51, 0.32);
+  }
+
+  @media (max-width: 720px) {
+    max-height: 92vh;
+    border-radius: 8px;
+  }
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  padding: 1.4rem 1.4rem 1rem;
+`;
+
+const ModalHeaderText = styled.div`
+  display: grid;
+  gap: 0.45rem;
+`;
+
+const ModalLabel = styled.p`
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+`;
+
+const ModalTitle = styled.h3`
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  letter-spacing: -0.04em;
+`;
+
+const ModalCloseButton = styled.button`
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 1.9rem;
+  line-height: 1;
+  transition: color 180ms ease, transform 180ms ease, opacity 180ms ease;
+
+  &:hover {
+    color: #35587c;
+    transform: scale(1.06);
+    opacity: 0.9;
+  }
+`;
+
+const ModalImageWrap = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10.5;
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.74);
+
+  &:hover a,
+  &:focus-within a {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 820px) {
+    &:hover a,
+    &:focus-within a {
+      transform: translateY(100%);
+    }
+  }
+`;
+
+const ModalImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const ModalBody = styled.div`
+  display: grid;
+  gap: 1.15rem;
+  padding: 1.3rem 1.4rem 1.5rem;
+`;
+
+const ModalIntroGrid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(260px, 0.92fr) minmax(0, 1.25fr);
+  gap: 1.15rem;
+  align-items: start;
+
+  @media (max-width: 820px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ModalIntroContent = styled.div`
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+`;
+
+const ModalText = styled.p`
+  line-height: 1.72;
+  color: var(--muted-foreground);
+`;
+
+const ModalList = styled.ul`
+  display: grid;
+  gap: 0.8rem;
+  padding-left: 1.1rem;
+  color: var(--foreground);
+`;
+
+const ModalListItem = styled.li`
+  line-height: 1.68;
+`;
+
+const ModalFooter = styled.div`
+  display: none;
+
+  @media (max-width: 820px) {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 0.2rem;
+    border-top: 0;
+  }
+`;
+
+const ModalSiteLink = styled.a`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 46px;
+  padding: 0.75rem 1rem;
+  background: rgba(41, 94, 151, 0.96);
+  color: #f8fafc;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: translateY(100%);
+  transition: transform 140ms ease-out, background 160ms ease;
+
+  &:hover {
+    background: rgba(33, 79, 128, 0.98);
+  }
+
+  @media (max-width: 820px) {
+    display: none;
+  }
+`;
+
+const ModalMobileSiteLink = styled.a`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  background: rgba(43, 47, 51, 0.92);
+  color: #f8fafc;
+  transition: background 180ms ease, transform 180ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    background: rgba(24, 29, 34, 0.96);
+  }
+
+  @media (max-width: 820px) {
+    display: inline-flex;
   }
 `;
 
@@ -388,7 +665,7 @@ const FilterButton = styled.button`
   }
 `;
 
-function PortfolioCard({ project, preloadImage = false }) {
+function PortfolioCard({ project, preloadImage = false, onLearnMore }) {
   return (
     <ProjectCard>
       <CardImageWrap>
@@ -420,9 +697,9 @@ function PortfolioCard({ project, preloadImage = false }) {
           <TechTag key={`${project.name}-${item}`}>{item}</TechTag>
         ))}
       </TechList>
-      <CardLink href={project.link} target="_blank" rel="noreferrer">
-        View project
-      </CardLink>
+      <CardActionButton type="button" onClick={() => onLearnMore(project)}>
+        Learn more
+      </CardActionButton>
     </ProjectCard>
   );
 }
@@ -430,6 +707,51 @@ function PortfolioCard({ project, preloadImage = false }) {
 export default function Landing() {
   const { intro, filters, projects } = landingData;
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isClosingModal, setIsClosingModal] = useState(false);
+
+  const openProjectModal = (project) => {
+    setIsClosingModal(false);
+    setSelectedProject(project);
+  };
+
+  const closeProjectModal = () => {
+    setIsClosingModal(true);
+  };
+
+  useEffect(() => {
+    if (!selectedProject) {
+      document.body.style.overflow = "";
+      return undefined;
+    }
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsClosingModal(true);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [selectedProject]);
+
+  useEffect(() => {
+    if (!isClosingModal || !selectedProject) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setSelectedProject(null);
+      setIsClosingModal(false);
+    }, 140);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isClosingModal, selectedProject]);
 
   const featuredProjects = useMemo(
     () =>
@@ -457,7 +779,6 @@ export default function Landing() {
         <Hero>
           <div>
             <HeroTitle>{intro.title}</HeroTitle>
-            <HeroSubtitle>{intro.subtitle}</HeroSubtitle>
             <HeroCopy>{intro.summary}</HeroCopy>
             <HeroActions>
               <PrimaryLink href="/contact">Start a conversation</PrimaryLink>
@@ -479,8 +800,7 @@ export default function Landing() {
           <BannerIntro>
             <StatsEyebrow>Based in product execution</StatsEyebrow>
             <StatsTitle>
-              Strategy, interface design, and engineering in one build-minded
-              workflow.
+              I bring strategy, design, and engineering together to move ideas from concept to working product.
             </StatsTitle>
           </BannerIntro>
           {intro.stats.map((stat) => (
@@ -494,11 +814,9 @@ export default function Landing() {
         <Section>
           <SectionHeadingRow>
             <div>
-              <SectionTitle>Recent and representative work</SectionTitle>
+              <SectionTitle>Recent work and direction</SectionTitle>
               <SectionText>
-                The first row highlights the projects that best represent where
-                the work is headed now: product thinking, implementation depth,
-                and practical AI.
+                The below highlights projects that reflect where my work is headed now: AI‑powered systems, scalable web platforms, and product‑driven execution with real implementation depth.
               </SectionText>
             </div>
           </SectionHeadingRow>
@@ -508,6 +826,7 @@ export default function Landing() {
                 key={project.name}
                 project={project}
                 preloadImage={index < 2}
+                onLearnMore={openProjectModal}
               />
             ))}
           </FeaturedGrid>
@@ -518,8 +837,7 @@ export default function Landing() {
             <div>
               <SectionTitle>Project archive</SectionTitle>
               <SectionText>
-                Everything lives in one project list now, so adding new work is
-                just adding another object in `app/data/landing.js`.
+                A chronological catalog of past product, engineering, and AI work.
               </SectionText>
             </div>
             <FilterRow>
@@ -541,11 +859,97 @@ export default function Landing() {
                 key={`${activeFilter}-${project.name}`}
                 project={project}
                 preloadImage={activeFilter === "All" && index < 2}
+                onLearnMore={openProjectModal}
               />
             ))}
           </ProjectGrid>
         </ProjectArchiveSection>
       </ContentGrid>
+      {selectedProject ? (
+        <ModalOverlay $closing={isClosingModal} onClick={closeProjectModal}>
+          <ModalCard
+            $closing={isClosingModal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-details-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <ModalHeader>
+              <ModalHeaderText>
+                <ModalLabel>Project details</ModalLabel>
+                <ModalTitle id="project-details-title">
+                  {selectedProject.name}
+                </ModalTitle>
+              </ModalHeaderText>
+              <ModalCloseButton
+                type="button"
+                aria-label="Close project details"
+                onClick={closeProjectModal}
+              >
+                ×
+              </ModalCloseButton>
+            </ModalHeader>
+            <ModalBody>
+              <ModalIntroGrid>
+                <ModalIntroContent>
+                  <CardMeta>
+                    <BadgeRow>
+                      {selectedProject.categories
+                        .filter((category) => category !== "Recent")
+                        .slice(0, 4)
+                        .map((category) => (
+                          <Badge key={`${selectedProject.name}-${category}`}>
+                            {category}
+                          </Badge>
+                        ))}
+                    </BadgeRow>
+                    <YearText>{selectedProject.year}</YearText>
+                  </CardMeta>
+                  <ModalText>{selectedProject.detailSummary}</ModalText>
+                  <ModalText>{selectedProject.impact}</ModalText>
+                </ModalIntroContent>
+                <ModalImageWrap>
+                  <ModalImage
+                    src={selectedProject.image}
+                    alt={selectedProject.name}
+                    placeholder="blur"
+                  />
+                  <ModalSiteLink
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Visit site
+                  </ModalSiteLink>
+                </ModalImageWrap>
+              </ModalIntroGrid>
+              <ModalList>
+                {selectedProject.detailPoints.map((point) => (
+                  <ModalListItem key={`${selectedProject.name}-${point}`}>
+                    {point}
+                  </ModalListItem>
+                ))}
+              </ModalList>
+              <TechList>
+                {selectedProject.tech.map((item) => (
+                  <TechTag key={`${selectedProject.name}-modal-${item}`}>
+                    {item}
+                  </TechTag>
+                ))}
+              </TechList>
+              <ModalFooter>
+                <ModalMobileSiteLink
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit site
+                </ModalMobileSiteLink>
+              </ModalFooter>
+            </ModalBody>
+          </ModalCard>
+        </ModalOverlay>
+      ) : null}
     </PageShell>
   );
 }
