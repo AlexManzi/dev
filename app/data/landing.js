@@ -3,6 +3,7 @@ import impactReport from "../../public/impactReport.webp";
 import districtProfiles from "../../public/districtProfiles.webp";
 import energyHub from "../../public/energyHub.webp";
 import mangiaAi from "../../public/mangiaAi.webp";
+import cloudPlay from "../../public/cloudPlay.webp";
 import floodHelp from "../../public/floodHelp.webp";
 import bhp from "../../public/bhp.webp";
 
@@ -21,6 +22,34 @@ export const landingData = {
   },
   filters: ["All", "Recent", "Engineering", "Product", "AI"],
   projects: [
+    {
+      name: "CloudPlayPlus",
+      image: cloudPlay,
+      description:
+        "CloudPlayPlus is a lightweight Android launcher for Xbox Cloud Gaming, offering sharper visuals via FidelityFX CAS, and a built‑in Discord overlay.",
+      impact:
+        "Turned cloud gaming into a native, handheld‑friendly experience by replacing the default Xbox Cloud Gaming flow with a fast, purpose‑built Android launcher.",
+      detailSummary:
+        "I led the product and full-stack build around a core constraint: make AI useful without forcing people into a chatbot-first experience. The work centered on turning meal planning into a structured workflow with recommendations, budget awareness, and personalization built directly into the product.",
+      detailPoints: [
+        "Integrated AMD FidelityFX CAS to improve stream sharpness without adding overhead or configuration complexity.",
+        "Added an optional Discord overlay to keep social presence and voice chat accessible during gameplay.",
+        "Designed and implemented the full Android app architecture — UI, input handling, permissions, native integrations, and performance constraints — with a focus on handheld devices.",
+      ],
+      tech: [
+        "Kotlin",
+        "Claude Code",
+        "OpenAI Codex",
+        "Javascript",
+        "Gemini Pro",
+        "Next.js",
+        "React"
+      ],
+      categories: ["Recent", "AI", "Engineering", "Product"],
+      year: 2026,
+      featured: true,
+      link: "https://alexmanzi.github.io/cloud-play-plus/",
+    },
     {
       name: "Mangia.AI",
       image: mangiaAi,
@@ -45,7 +74,7 @@ export const landingData = {
       ],
       categories: ["Recent", "AI", "Engineering", "Product"],
       year: 2025,
-      featured: true,
+      featured: false,
       link: "https://main.d3u77kxuh2gdz9.amplifyapp.com",
     },
     {

@@ -284,6 +284,7 @@ const FeaturedGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.65rem;
+  align-items: stretch;
 
   @media (max-width: 960px) {
     grid-template-columns: 1fr;
@@ -293,8 +294,8 @@ const FeaturedGrid = styled.div`
 const ProjectGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 3rem 1.2rem;
-  align-items: start;
+  gap: 0.5rem 1.2rem;
+  align-items: stretch;
 
   @media (max-width: 960px) {
     grid-template-columns: 1fr;
@@ -306,8 +307,22 @@ const ProjectCard = styled.article`
   display: grid;
   grid-template-rows: auto auto auto 1fr auto auto;
   gap: 0.8rem;
-  align-content: start;
+  align-content: stretch;
   height: 100%;
+  transition: transform 180ms ease, opacity 180ms ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 960px) {
+    cursor: default;
+
+    &:hover {
+      transform: none;
+    }
+  }
 `;
 
 const CardImageWrap = styled.div`
@@ -316,9 +331,38 @@ const CardImageWrap = styled.div`
   height: ${(props) => (props.$compact ? "185px" : "240px")};
   border-radius: 10px;
   overflow: hidden;
+  transition: box-shadow 180ms ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(20, 27, 35, 0);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0);
+    transition: background 180ms ease, box-shadow 180ms ease;
+  }
+
+  ${ProjectCard}:hover & {
+    box-shadow: 0 12px 28px rgba(43, 47, 51, 0.14);
+  }
+
+  ${ProjectCard}:hover &::after {
+    background: rgba(20, 27, 35, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+  }
 
   @media (max-width: 960px) {
     height: ${(props) => (props.$compact ? "205px" : "260px")};
+
+    ${ProjectCard}:hover & {
+      box-shadow: none;
+    }
+
+    ${ProjectCard}:hover &::after {
+      background: rgba(20, 27, 35, 0);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0);
+    }
   }
 `;
 
@@ -330,6 +374,16 @@ const CardImage = styled(Image)`
   filter: blur(0);
   transform: scale(1);
   transition: filter 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
+
+  ${ProjectCard}:hover & {
+    transform: scale(1.018);
+  }
+
+  @media (max-width: 960px) {
+    ${ProjectCard}:hover & {
+      transform: scale(1);
+    }
+  }
 `;
 
 const CardMeta = styled.div`
@@ -382,6 +436,12 @@ const TechList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  align-content: start;
+  min-height: 6.2rem;
+
+  @media (max-width: 960px) {
+    min-height: 0;
+  }
 `;
 
 const TechTag = styled.span`
@@ -392,6 +452,7 @@ const TechTag = styled.span`
 `;
 
 const CardActionButton = styled.button`
+  display: none;
   width: fit-content;
   margin-top: 0.5rem;
   font-weight: 600;
@@ -408,6 +469,10 @@ const CardActionButton = styled.button`
   &:hover {
     color: #35587c;
     border-color: #35587c;
+  }
+
+  @media (max-width: 960px) {
+    display: inline-flex;
   }
 `;
 
@@ -677,9 +742,29 @@ function PortfolioCard({
   preloadImage = false,
   onLearnMore,
   compactImage = false,
+  cardsClickable = false,
 }) {
+  const openFromCard = () => {
+    if (cardsClickable) {
+      onLearnMore(project);
+    }
+  };
+
+  const openFromKeyboard = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openFromCard();
+    }
+  };
+
   return (
-    <ProjectCard>
+    <ProjectCard
+      onClick={openFromCard}
+      onKeyDown={openFromKeyboard}
+      role={cardsClickable ? "button" : undefined}
+      tabIndex={cardsClickable ? 0 : undefined}
+      aria-label={cardsClickable ? `Open ${project.name} details` : undefined}
+    >
       <CardImageWrap $compact={compactImage}>
         <CardImage
           src={project.image}
@@ -709,7 +794,13 @@ function PortfolioCard({
           <TechTag key={`${project.name}-${item}`}>{item}</TechTag>
         ))}
       </TechList>
-      <CardActionButton type="button" onClick={() => onLearnMore(project)}>
+      <CardActionButton
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation();
+          onLearnMore(project);
+        }}
+      >
         Learn more
       </CardActionButton>
     </ProjectCard>
@@ -721,6 +812,7 @@ export default function Landing() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isClosingModal, setIsClosingModal] = useState(false);
+  const [cardsClickable, setCardsClickable] = useState(false);
 
   const openProjectModal = (project) => {
     setIsClosingModal(false);
@@ -730,6 +822,18 @@ export default function Landing() {
   const closeProjectModal = () => {
     setIsClosingModal(true);
   };
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 961px)");
+    const updateCardsClickable = () => setCardsClickable(mediaQuery.matches);
+
+    updateCardsClickable();
+    mediaQuery.addEventListener("change", updateCardsClickable);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateCardsClickable);
+    };
+  }, []);
 
   useEffect(() => {
     if (!selectedProject) {
@@ -840,6 +944,7 @@ export default function Landing() {
                 preloadImage={index < 2}
                 onLearnMore={openProjectModal}
                 compactImage={true}
+                cardsClickable={cardsClickable}
               />
             ))}
           </FeaturedGrid>
@@ -873,6 +978,7 @@ export default function Landing() {
                 project={project}
                 preloadImage={activeFilter === "All" && index < 2}
                 onLearnMore={openProjectModal}
+                cardsClickable={cardsClickable}
               />
             ))}
           </ProjectGrid>
