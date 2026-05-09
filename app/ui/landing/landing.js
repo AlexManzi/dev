@@ -313,16 +313,20 @@ const ProjectCard = styled.article`
 const CardImageWrap = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 8.8;
-  overflow: hidden;
+  height: ${(props) => (props.$compact ? "185px" : "240px")};
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+
+  @media (max-width: 960px) {
+    height: ${(props) => (props.$compact ? "205px" : "260px")};
+  }
 `;
 
 const CardImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   filter: blur(0);
   transform: scale(1);
   transition: filter 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
@@ -515,7 +519,7 @@ const ModalCloseButton = styled.button`
 const ModalImageWrap = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10.5;
+  height: 260px;
   overflow: hidden;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.74);
@@ -526,6 +530,8 @@ const ModalImageWrap = styled.div`
   }
 
   @media (max-width: 820px) {
+    height: 220px;
+
     &:hover a,
     &:focus-within a {
       transform: translateY(100%);
@@ -537,6 +543,7 @@ const ModalImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 `;
 
 const ModalBody = styled.div`
@@ -665,10 +672,15 @@ const FilterButton = styled.button`
   }
 `;
 
-function PortfolioCard({ project, preloadImage = false, onLearnMore }) {
+function PortfolioCard({
+  project,
+  preloadImage = false,
+  onLearnMore,
+  compactImage = false,
+}) {
   return (
     <ProjectCard>
-      <CardImageWrap>
+      <CardImageWrap $compact={compactImage}>
         <CardImage
           src={project.image}
           alt={project.name}
@@ -827,6 +839,7 @@ export default function Landing() {
                 project={project}
                 preloadImage={index < 2}
                 onLearnMore={openProjectModal}
+                compactImage={true}
               />
             ))}
           </FeaturedGrid>
