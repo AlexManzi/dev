@@ -112,11 +112,13 @@ export const landingData = {
         "Integrated mapping and search capabilities to support practical exploration instead of static information browsing.",
       ],
       tech: [
-        "Ruby on Rails",
+        "Next.js",
+        "Claude Code",
         "React",
         "JavaScript",
         "styled-components",
         "Google Maps API",
+        "AWS"
       ],
       categories: ["Recent", "Engineering", "Product"],
       year: 2026,
