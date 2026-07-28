@@ -1,0 +1,63 @@
+name: Blog post
+description: Draft or publish a blog post
+title: "[Blog] "
+labels:
+  - blog
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use the `draft` label while writing. Add the `published` label when this post is ready for the public site.
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: The public title of the post.
+      placeholder: Building with clarity
+    validations:
+      required: true
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: Lowercase URL slug using letters, numbers, and hyphens only.
+      placeholder: building-with-clarity
+    validations:
+      required: true
+  - type: textarea
+    id: excerpt
+    attributes:
+      label: Excerpt
+      description: One or two sentences used on the blog index.
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      placeholder: Product thinking
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: Publication date in YYYY-MM-DD format.
+      placeholder: 2026-07-28
+    validations:
+      required: true
+  - type: input
+    id: reading-time
+    attributes:
+      label: Reading time
+      description: Display value, such as 4 min read.
+      placeholder: 4 min read
+    validations:
+      required: true
+  - type: textarea
+    id: body
+    attributes:
+      label: Post body
+      description: Write the post in Markdown.
+    validations:
+      required: true

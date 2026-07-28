@@ -23,6 +23,7 @@ export const landingData = {
   filters: ["All", "Recent", "Engineering", "Product", "AI"],
   projects: [
     {
+      slug: "cloudplayplus",
       name: "CloudPlayPlus",
       image: cloudPlay,
       description:
@@ -51,6 +52,7 @@ export const landingData = {
       link: "https://alexmanzi.github.io/cloud-play-plus/",
     },
     {
+      slug: "mangia-ai",
       name: "Mangia.AI",
       image: mangiaAi,
       description:
@@ -78,6 +80,7 @@ export const landingData = {
       link: "https://main.d3u77kxuh2gdz9.amplifyapp.com",
     },
     {
+      slug: "bronx-brooklyn-energy-hub",
       name: "Bronx & Brooklyn Energy Hub",
       image: energyHub,
       description:
@@ -98,6 +101,7 @@ export const landingData = {
       link: "https://bxbkenergyhub.org/en-US/",
     },
     {
+      slug: "floodhelpny",
       name: "FloodHelpNY",
       image: floodHelp,
       description:
@@ -126,6 +130,7 @@ export const landingData = {
       link: "https://www.floodhelpny.org/",
     },
     {
+      slug: "cnycn-main-site",
       name: "CNYCN Main Site",
       image: CenSite,
       description:
@@ -153,6 +158,7 @@ export const landingData = {
       link: "https://cnycn.org/",
     },
     {
+      slug: "nyc-district-profiles",
       name: "NYC District Profiles",
       image: districtProfiles,
       description:
@@ -180,6 +186,7 @@ export const landingData = {
       link: "https://cnycn.org/district-profiles",
     },
     {
+      slug: "impact-report",
       name: "Impact Report",
       image: impactReport,
       description:
@@ -206,6 +213,7 @@ export const landingData = {
       link: "https://cnycn.org/impact-report",
     },
     {
+      slug: "black-homeownership-project",
       name: "Black Homeownership Project",
       image: bhp,
       description:
