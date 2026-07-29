@@ -27,6 +27,7 @@ async function getIssues() {
 
 function sections(body = "") {
   const values = {};
+  const fieldNames = new Set(["title", "slug", "excerpt", "category", "date", "reading time", "post body"]);
   let currentHeading;
   let currentValue = [];
   const save = () => {
@@ -37,10 +38,11 @@ function sections(body = "") {
       currentValue.push(line);
       continue;
     }
-    const heading = line.match(/^#{2,3}\s+(.+?)\s*$/);
-    if (heading) {
+    const heading = line.trim().match(/^#{2,3}\s+(.+?)\s*$/);
+    const plainField = line.trim().toLowerCase();
+    if (heading || fieldNames.has(plainField)) {
       save();
-      currentHeading = heading[1].trim().toLowerCase();
+      currentHeading = heading ? heading[1].trim().toLowerCase() : plainField;
       currentValue = [];
     } else if (currentHeading) {
       currentValue.push(line);
