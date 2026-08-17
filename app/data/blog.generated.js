@@ -8,14 +8,5 @@ export const blogPosts = [
     "category": "Notes",
     "readingTime": "4 min read",
     "body": "Hello! This is my first post in a series of blog posts about technical challenges I think are interesting. My hope is to have a casual discusssion about cool technical problems I run in to. \n\nToday was one of those day! We're building a website for a client that wants to be able to easily show the people they work with information that is stored on an airtable instance. Embedding the data in the page and creating dynamic routes inside of Nextjs allowed us to easily get this out the door. Keeping the information accurate became the hard part. \n\nMany of the people we work with do not have the technical experience that developershave. Asking for an API key to an airtable can bring panic and confusion to a zoom meeting. People may be unfamiliar with a API key is and these companies usually hide these keys behind developer settings that make the process inherintley difficult for non technical users. This no API key issue has been a problem for a few weeks and it seemed there was no solution to getting this connection live. \n\nI believe its our job as engineers to always find a low friction solution to get the end users what they want. AI helps us build but we need to provide the ideas and direction. \n\nI built a workaround using Playwright, a headless browser that loads the Airtable share page and captures the underlying data the page itself requests. We get structured records, not scraped HTML.\n\nA GitHub Action runs it every morning. Playwright handles the read, and the script compares the result against a JSON file stored in the repo. If anything changed, it opens a pull request, which emails the developers (myself included). That serves two purposes: it keeps a human in the loop to sanity-check the data before it goes live, and it keeps everything inside the normal release pipeline.\n\nThe hard part isn't getting the data it's refusing it. A scrape that fails loudly is fine, one that quietly writes plausible-but-wrong data is not. So the sync aborts and writes nothing if a column is renamed, the payload is empty, the row count drops more than 20%, or any ID is blank or duplicated.\n\nThis was a really interesting problem and I really enjoy solving issues where our works seems blocked. I look forward to future opportunities to find solutions to difficult problems."
-  },
-  {
-    "slug": "testing-the-blog",
-    "title": "Testing the blog",
-    "excerpt": "A test post for the blog connection.",
-    "date": "2026-07-28",
-    "category": "Notes",
-    "readingTime": "1 min read",
-    "body": "I'm just testing the blog connection."
   }
 ];
