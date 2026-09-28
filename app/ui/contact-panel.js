@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
+import XpTitleBar from "./xp-title-bar";
 import { ContactData } from "@/app/data/contact";
 
 const ContactPanelContext = createContext(null);
@@ -29,7 +30,7 @@ export function ContactPanelProvider({ children }) {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterJoined, setNewsletterJoined] = useState(false);
   const handleNewsletterSubmit = (event) => { event.preventDefault(); setNewsletterJoined(true); };
-  return <ContactPanelContext.Provider value={{ open, setOpen }}>{children}{open && <Backdrop onClick={()=>setOpen(false)} aria-hidden="true" />}<Band $open={open} aria-hidden={!open}><CloseButton type="button" aria-label="Close contact panel" onClick={()=>setOpen(false)}>×</CloseButton><Content><div><Kicker>Open to good problems</Kicker><Heading>Let&apos;s make something useful.</Heading><Copy>Product-minded engineering, thoughtful interfaces, and practical AI for complicated work.</Copy></div><SocialSection><SocialHeading>Connect with me</SocialHeading><Links>{ContactData.socials.map(social=><SocialLink key={social.name} href={social.href} target="_blank" rel="noreferrer">{social.name}</SocialLink>)}</Links></SocialSection><Newsletter><NewsletterLabel>Join the newsletter</NewsletterLabel>{newsletterJoined ? <Success>You&apos;re on the list. Thanks for joining.</Success> : <NewsletterForm onSubmit={handleNewsletterSubmit}><EmailInput type="email" required value={newsletterEmail} onChange={(event)=>setNewsletterEmail(event.target.value)} placeholder="you@example.com" aria-label="Email address" /><SubscribeButton type="submit">Subscribe</SubscribeButton></NewsletterForm>}</Newsletter></Content></Band></ContactPanelContext.Provider>;
+  return <ContactPanelContext.Provider value={{ open, setOpen }}>{children}{open && <Backdrop onClick={()=>setOpen(false)} aria-hidden="true" />}<Band data-xp-contact $open={open} aria-hidden={!open}><XpTitleBar>Contact — Alex Manzi</XpTitleBar><CloseButton data-xp-close type="button" aria-label="Close contact panel" onClick={()=>setOpen(false)}>×</CloseButton><Content><div><Kicker>Open to good problems</Kicker><Heading>Let&apos;s make something useful.</Heading><Copy>Product-minded engineering, thoughtful interfaces, and practical AI for complicated work.</Copy></div><SocialSection><SocialHeading>Connect with me</SocialHeading><Links>{ContactData.socials.map(social=><SocialLink key={social.name} href={social.href} target="_blank" rel="noreferrer">{social.name}</SocialLink>)}</Links></SocialSection><Newsletter><NewsletterLabel>Join the newsletter</NewsletterLabel>{newsletterJoined ? <Success>You&apos;re on the list. Thanks for joining.</Success> : <NewsletterForm onSubmit={handleNewsletterSubmit}><EmailInput type="email" required value={newsletterEmail} onChange={(event)=>setNewsletterEmail(event.target.value)} placeholder="you@example.com" aria-label="Email address" /><SubscribeButton type="submit">Subscribe</SubscribeButton></NewsletterForm>}</Newsletter></Content></Band></ContactPanelContext.Provider>;
 }
 
 export function useContactPanel() {

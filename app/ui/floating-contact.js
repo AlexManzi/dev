@@ -8,5 +8,5 @@ const ContactArrow = styled.span`display:inline-block; margin-left:.3rem; font-s
 
 export default function FloatingContactButton() {
   const { setOpen } = useContactPanel();
-  return <FloatingContact type="button" onClick={()=>setOpen(true)}>Contact <ContactArrow>↗</ContactArrow></FloatingContact>;
+  return <FloatingContact data-xp-contact-button type="button" onClick={()=>setOpen(true)}>Contact <ContactArrow>↗</ContactArrow></FloatingContact>;
 }
