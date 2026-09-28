@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#1763c0"/><stop offset=".65" stop-color="#76b9ed"/><stop offset="1" stop-color="#d3e9f4"/></linearGradient>
+    <linearGradient id="hill" x2=".3" y2="1"><stop stop-color="#9bce43"/><stop offset=".4" stop-color="#5caa23"/><stop offset="1" stop-color="#226314"/></linearGradient>
+    <linearGradient id="front" x2=".2" y2="1"><stop stop-color="#80bd32"/><stop offset="1" stop-color="#337618"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="16"/></filter>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/>
+  <g fill="#fff" opacity=".7" filter="url(#blur)">
+    <ellipse cx="285" cy="225" rx="170" ry="25"/><ellipse cx="355" cy="200" rx="95" ry="32"/>
+    <ellipse cx="1160" cy="160" rx="200" ry="22"/><ellipse cx="1090" cy="140" rx="100" ry="30"/>
+    <ellipse cx="1430" cy="360" rx="130" ry="18"/>
+  </g>
+  <path fill="url(#hill)" d="M0 630C260 450 500 460 810 595s520 60 790-55v460H0z"/>
+  <path fill="url(#front)" d="M0 785c360 30 700-180 1010-120s400 105 590 70v265H0z"/>
+</svg>

@@ -33,7 +33,6 @@ const MenuLine = styled.span`
 
 const themeOptions = [
   { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
   { value: "xp", label: "Windows XP" },
 ];
 
@@ -49,17 +48,17 @@ export default function Navbar() {
     setTheme(nextTheme.value);
   };
 
-  return <Header><Bar>
-    <Brand href="/">Alex Manzi</Brand>
+  return <Header data-xp-window="navbar"><Bar>
+    <Brand data-xp-start href="/">Alex Manzi</Brand>
     <Links id="primary-navigation" $open={open}>
-      <NavLink href="/" $active={isActive("/")} onClick={()=>setOpen(false)}>Work</NavLink>
-      <NavLink href="/agents" $active={isActive("/agents")} onClick={()=>setOpen(false)}>Agents</NavLink>
-      <NavLink href="/blog" $active={isActive("/blog")} onClick={()=>setOpen(false)}>Blog</NavLink>
+      <NavLink data-xp-nav href="/" $active={isActive("/")} aria-current={isActive("/") ? "page" : undefined} onClick={()=>setOpen(false)}>Work</NavLink>
+      <NavLink data-xp-nav href="/agents" $active={isActive("/agents")} aria-current={isActive("/agents") ? "page" : undefined} onClick={()=>setOpen(false)}>Agents</NavLink>
+      <NavLink data-xp-nav href="/blog" $active={isActive("/blog")} aria-current={isActive("/blog") ? "page" : undefined} onClick={()=>setOpen(false)}>Blog</NavLink>
     </Links>
     <Controls>
       <ThemePicker>
-        <ThemeButton type="button" aria-label={`Switch theme. Current theme: ${selectedTheme.label}`} onClick={cycleTheme}>
-          <ThemeDot />{selectedTheme.label}
+        <ThemeButton type="button" aria-label={`Switch to ${theme === "xp" ? "Light" : "Windows XP"} mode. Current theme: ${selectedTheme.label}`} onClick={cycleTheme}>
+          <ThemeDot aria-hidden="true" />{selectedTheme.label}
         </ThemeButton>
       </ThemePicker>
       <MenuButton role="button" tabIndex="0" aria-label={open ? "Close navigation" : "Open navigation"} aria-controls="primary-navigation" aria-expanded={open} onClick={()=>setOpen(value=>!value)} onKeyDown={(event)=>{if(event.key === "Enter" || event.key === " "){event.preventDefault(); setOpen(value=>!value);}}}>

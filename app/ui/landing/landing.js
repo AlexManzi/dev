@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import LandingHeader from "@/public/LandingHeader.webp";
+import XpTitleBar from "../xp-title-bar";
 import { landingData } from "@/app/data/landing";
 
 const Shell = styled.main`width:min(1180px,calc(100% - 2.5rem)); margin:auto; padding:0 0 6rem;`;
@@ -39,8 +40,9 @@ const Arrow = styled.span`color:var(--accent); font-weight:700;`;
 function ProjectCard({ project, featured = false, index = 0, revealed = true }) {
   const Component = featured ? FeaturedCard : Card;
   const Wrap = featured ? FeaturedImage : ImageWrap;
-  return <Component href={`/projects/${project.slug}`} $index={index} $revealed={revealed}>
+  return <Component data-xp-card href={`/projects/${project.slug}`} $index={index} $revealed={revealed}>
     <Wrap><CardImage src={project.image} alt={project.name} placeholder="blur" /><Overlay><Meta><span>{project.categories.filter(item=>item!=="Recent").slice(0,2).join(" · ")}</span><span>{project.year}</span></Meta><CardTitle>{project.name}</CardTitle><CardText>{project.impact}</CardText><Arrow>View project →</Arrow></Overlay></Wrap>
+    <span className="xp-project-caption">{project.name}<span>Open project →</span></span>
   </Component>;
 }
 
@@ -78,9 +80,9 @@ export default function Landing() {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
-  return <Shell>
-    <Hero><div><Kicker>Product / Engineering / AI</Kicker><HeroTitle>Useful things, made with care.</HeroTitle><HeroCopy>I build clear digital products for complicated problems.</HeroCopy><Actions><Button href="#projects" $primary>See the work</Button><Button href="/blog">Read the blog</Button></Actions></div><Portrait><PortraitImage src={LandingHeader} alt="Portrait of Alex Manzi" priority /></Portrait></Hero>
-    <Section><HeadingRow><div><Kicker>Featured builds</Kicker><SectionTitle>Selected work</SectionTitle><SectionNote>A few recent builds across product, web, and applied AI.</SectionNote></div></HeadingRow><FeatureGrid ref={featuredRef}>{featured.map((project,index)=><ProjectCard key={project.slug} project={project} featured index={index} revealed={featuredRevealed} />)}</FeatureGrid></Section>
-    <Section id="projects"><HeadingRow><div><Kicker>Archive</Kicker><SectionTitle>Projects</SectionTitle></div><Filters>{filters.map(item=><Filter key={item} type="button" $active={filter===item} onClick={()=>setFilter(item)}>{item}</Filter>)}</Filters></HeadingRow><CardGrid ref={projectsRef}>{visible.map((project,index)=><ProjectCard key={project.slug} project={project} index={index} revealed={projectsRevealed} />)}</CardGrid></Section>
+  return <Shell data-xp-desktop>
+    <Hero data-xp-window="hero"><XpTitleBar>Welcome — Alex Manzi</XpTitleBar><div><Kicker>Product / Engineering / AI</Kicker><HeroTitle>Useful things, made with care.</HeroTitle><HeroCopy>I build clear digital products for complicated problems.</HeroCopy><Actions><Button data-xp-button href="#projects" $primary>See the work</Button><Button data-xp-button href="/blog">Read the blog</Button></Actions></div><Portrait data-xp-portrait><PortraitImage src={LandingHeader} alt="Portrait of Alex Manzi" priority /></Portrait></Hero>
+    <Section data-xp-window="section"><XpTitleBar>My Portfolio — Selected work</XpTitleBar><HeadingRow><div><Kicker>Featured builds</Kicker><SectionTitle>Selected work</SectionTitle><SectionNote>A few recent builds across product, web, and applied AI.</SectionNote></div></HeadingRow><FeatureGrid ref={featuredRef}>{featured.map((project,index)=><ProjectCard key={project.slug} project={project} featured index={index} revealed={featuredRevealed} />)}</FeatureGrid></Section>
+    <Section id="projects" data-xp-window="section"><XpTitleBar>My Portfolio — Projects</XpTitleBar><HeadingRow><div><Kicker>Archive</Kicker><SectionTitle>Projects</SectionTitle></div><Filters>{filters.map(item=><Filter data-xp-filter aria-pressed={filter===item} key={item} type="button" $active={filter===item} onClick={()=>setFilter(item)}>{item}</Filter>)}</Filters></HeadingRow><CardGrid ref={projectsRef}>{visible.map((project,index)=><ProjectCard key={project.slug} project={project} index={index} revealed={projectsRevealed} />)}</CardGrid></Section>
   </Shell>;
 }
