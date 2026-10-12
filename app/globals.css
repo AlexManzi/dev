@@ -18,6 +18,7 @@ html[data-theme="xp"] body {
 }
 html[data-theme="xp"] :is(h1,h2,h3) { font-family:Tahoma, Arial, sans-serif; letter-spacing:normal; line-height:1.12; }
 html[data-theme="xp"] h1 { font-size:clamp(2rem,4.5vw,3.6rem); max-width:20ch; }
+html[data-theme="xp"] [data-xp-window="page"] h1 { max-width:100%; }
 html[data-theme="xp"] h2 { font-size:clamp(1.4rem,3vw,2rem); }
 html[data-theme="xp"] [data-xp-window="navbar"] {
   background:var(--xp-blue); border-bottom:2px solid #003caa;

@@ -6,9 +6,13 @@ import mangiaAi from "../../public/mangiaAi.webp";
 import cloudPlay from "../../public/cloudPlay.webp";
 import floodHelp from "../../public/floodHelp.webp";
 import bhp from "../../public/bhp.webp";
+import downPaymentAssistanceNavigator from "../../public/downPaymentAssistanceNavigator.webp";
 
 export const landingData = {
   intro: {
+    leadership:
+      "I lead products from architecture through launch, support them in production, and mentor junior engineers.",
+    technologies: ["Next.js", "React", "TypeScript", "Claude Code", "Codex", "AWS"],
     title: "Turning complexity into momentum.",
     subtitle:
       "",
@@ -22,6 +26,26 @@ export const landingData = {
   },
   filters: ["All", "Recent", "Engineering", "Product", "AI"],
   projects: [
+    {
+      slug: "down-payment-assistance-navigator",
+      name: "Down Payment Assistance Navigator",
+      image: downPaymentAssistanceNavigator,
+      description:
+        "Free tool helping NYC first-time homebuyers find down payment assistance programs.",
+      impact:
+        "Served over 40,000 NYC users in one year, helping homebuyers find and compare down payment assistance programs.",
+      detailSummary:
+        "I redesigned the down payment assistance platform, integrated an external API to match homebuyers with programs based on their criteria, and built a comparison tool to help them evaluate options. The platform served over 40,000 users in NYC in one year.",
+      detailPoints: [
+        "Redesigned the platform to help NYC first-time homebuyers find down payment assistance.",
+        "Integrated an external API to match homebuyers with programs based on their criteria.",
+        "Built a comparison tool to help homebuyers evaluate program options.",
+      ],
+      tech: [],
+      categories: ["Recent", "Engineering", "Product"],
+      year: 2026,
+      featured: false,
+    },
     {
       slug: "cloudplayplus",
       name: "CloudPlayPlus",
@@ -107,13 +131,13 @@ export const landingData = {
       description:
         "City resource designed to help residents understand flood risk and prepare for emergencies.",
       impact:
-        "Turned fragmented guidance into a usable digital tool with location-aware information and clearer calls to action.",
+        "Rebuilt the flood information platform and modernized maps, reducing annual costs by $21,000.",
       detailSummary:
-        "The core problem here was fragmentation. Residents needed one place to understand local flood risk, preparation steps, and emergency guidance without stitching together multiple agencies and documents themselves.",
+        "My recent work on FloodHelpNY spans the Next.js rebuild, geospatial infrastructure, and user management. I led the platform rebuild and launched authentication and access control to support a public-facing resource that helps residents understand flood risk and prepare for emergencies.",
       detailPoints: [
-        "Built a clearer product structure around location-aware content so residents could get more relevant guidance faster.",
-        "Translated a broad set of city resources into a more usable interface with stronger calls to action and better information hierarchy.",
-        "Integrated mapping and search capabilities to support practical exploration instead of static information browsing.",
+        "Migrated maps in two public-facing applications from Carto to Google Maps and deck.gl, serving geospatial assets through Amazon S3 and CloudFront and reducing annual costs by $21,000.",
+        "Led the Next.js rebuild, established reusable UI patterns, and migrated the NYC Geoclient integration for address lookups.",
+        "Built and launched a user management system, developed its API, and integrated Amazon Cognito and OAuth for authentication and access control.",
       ],
       tech: [
         "Next.js",
@@ -122,7 +146,12 @@ export const landingData = {
         "JavaScript",
         "styled-components",
         "Google Maps API",
-        "AWS"
+        "deck.gl",
+        "Amazon S3",
+        "CloudFront",
+        "NYC Geoclient",
+        "Amazon Cognito",
+        "OAuth"
       ],
       categories: ["Recent", "Engineering", "Product"],
       year: 2026,
